@@ -42,9 +42,9 @@ This paper mainly covers the following part.
 
 \begin{enumerate}
   \item Introduction
-  \begin{itemize}
+  \begin{enumerate}
     \item Definition of Distributed Systems
-  \end{itemize}
+  \end{enumerate}
   \item The Partial Ordering
   \begin{enumerate}
       \item Definition of order, what is \textit{happens before}, Symbol $\rightarrow$. % the arrow http://garsia.math.yorku.ca/MPWP/LATEXmath/node9.html
@@ -54,7 +54,7 @@ This paper mainly covers the following part.
   \begin{enumerate}
       \item 2 Clock Condition, one inside process (C1), one between process, measured by message (C2).
       \item improved and 3-D space-time diagram.
-      \item 2 Implementation Rule, one inside process (IR1), one between process , measured by message, $T_m = C_i<a>$ (IR2).
+      \item 2 Implementation Rule, one inside process (IR1), one between process , measured by message, $T_m = C_i\langle a \rangle$ (IR2).
   \end{enumerate}
   \item Ordering the Events Totally
   \begin{enumerate}
@@ -104,21 +104,59 @@ on 8:30AM.
 So although in physical time breakfast \textit{happens before} Jack saw the message, they are \textit{concurrent}
 in the view of the system.
 
-\subsection{The Partial Ordering}
+\subsection{The Partial Ordering} \label{PO}
 
 Order need to be observed with the system.
 Physical clocks are not perfectly accurate and do not keep precise physical time\cite{l}.
 
 Define \textit{happens before} ($\rightarrow$) as following
 
-\begin{itemize}
-  \item Inside a process, $\rightarrow$ is just like physical time.
-  \item If message is sent from process $a$ to $b$, $a \rightarrow b$.
+\begin{enumerate}
+  % TODO: may use the word in paper directly for PO1, due to C1
+  \item \label{PO1} Inside a process, $\rightarrow$ is just like physical time.
+  \item \label{PO2} If message is sent from process $P_i$ to $P_j$,
+  $a$ is the sending of the message,  $b$ is receiving of that message, then $a \rightarrow b$.
   \item $if\ a \rightarrow b\ and\ b \rightarrow c, then\ a \rightarrow c$.
+  % TODO: IMPL the counter implementation
   \item $if\ a \centernot\rightarrow b\ and\ b \centernot\rightarrow a$, then a is \textit{concurrent} with b.
-\end{itemize}
+\end{enumerate}
 
 \subsection{Logical Clocks}
+
+Define \textit{Clock} $C$ as following\cite{l}
+
+\begin{itemize}
+  \item just a way of assigning numbers to event, no relation with physical time, can be implemented using mere counter.
+  \item $C_i$ for each process $P_i$ where a number $C_i\langle a \rangle$ is assigned to event $a$ in that process.
+  \item function $C$ represents the entire system of clocks, so $C\langle b \rangle = C_i \langle b \rangle$ if $b$ is an event in process $P_i$.
+\end{itemize}
+
+Define \textit{Clock Condition} as following
+
+\medskip
+
+For any events $a, b$: if $a \rightarrow b$ then $C\langle a \rangle < C\langle b \rangle$
+
+\medskip
+
+By extending \ref{PO1} and \ref{PO2} in \ref{PO} we have
+
+\begin{enumerate}
+  \item \label{C1} C1. If $a$ and $b$ are events in process $P_i$, and $a$ comes before $b$, then $C\langle a \rangle < C\langle b \rangle$\cite{l}
+  \item \label{C2} C2. If message is sent from process $a$ to $b$, then $C\langle a \rangle < C\langle b \rangle$\
+\end{enumerate}
+
+By extending \ref{C1} and \ref{C2} we have the implementation rule
+
+% TODO: IMPL 
+\begin{enumerate}
+  \item \label{IR1} IR1. Each process $P_i$ increments $C_i$ between any two successive events\cite{l}.
+  \item \label{IR2} IR2.
+  \begin{enumerate}
+    \item If event $a$ is the sending of a message $m$ by process $P_i$, then $m$ contains a timestamp $T_m=C_i\langle a \rangle$\cite{l}.
+    \item Upon receiving a message $m$, process $P_j$ sets $C_j$ greater than or equal to its present value and greater than $T_m$\cite{l}.
+  \end{enumerate}
+\end{enumerate}
 
 \subsection{Ordering the Event Totally}
 
@@ -167,8 +205,12 @@ You can also use page \pageref{l1}
 \section{Q\&A}
 
 % TODO: got this question when writing the introduction part
-Q: When deal with message, the 'time' of send and receive message is regarded as same timestamp?
+Q: When deal with message, the 'time' of send and receive message is regarded as same timestamp? \\
 A: The clock must ticks between the message,  % TODO: find the pos in paper
+
+
+Q: How visualize the space-time diagram to 3D \\
+A: IDK
 
 The example in this paper use a lot of assumptions to simplify the proof.
 In real world applications, how engineers deal with these assumptions like messages
