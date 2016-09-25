@@ -10,6 +10,8 @@
 % FIXME: the font is really strange
 \usepackage[T1]{fontenc}
 
+\setlength\parindent{0pt}
+
 \addbibresource{summary.bib}
 
 % What problem does the paper solve? Is is important?
@@ -28,10 +30,11 @@
 
 \begin{abstract}
 
+\textbf{WIP}\footnote{The latest can be found in \url{https://github.com/at15/papers-i-read/tree/master/distributed_systems/time_clocks}}.
 This is a paper summary for Time, Clocks, and the Ordering of Events in a Distributed System\cite{l} by Lamport\footnote{\url{https://en.wikipedia.org/wiki/Leslie_Lamport}}.
 It is the assignment of CMPS232-Fall16\footnote{\url{https://github.com/palvaro/CMPS232-Fall16}}.
-% TODO: better 1-2 line summary
-In this paper Lamport introduced logical clocks for ordering event totally thus solving synchronization problems like mutual exclusion.
+% TODO: the summary is not accurate
+In this paper Lamport introduced logical clocks and total ordering with examples of solving synchronization problems like mutual exclusion, physical clocks.
 It is widely used in both academy and industry.
 
 \end{abstract}
@@ -43,11 +46,11 @@ This paper mainly covers the following part.
 \begin{enumerate}
   \item Introduction
   \begin{enumerate}
-    \item Definition of Distributed Systems
+    \item \ref{s:intro:s:dist} Definition of Distributed Systems
   \end{enumerate}
   \item The Partial Ordering
   \begin{enumerate}
-      \item Definition of order, what is \textit{happens before}, Symbol $\rightarrow$. % the arrow http://garsia.math.yorku.ca/MPWP/LATEXmath/node9.html
+      \item \ref{s:PO:DO} Definition of order, what is \textit{happens before}, Symbol $\rightarrow$. % the arrow http://garsia.math.yorku.ca/MPWP/LATEXmath/node9.html
       \item space-time diagram
   \end{enumerate}
   \item Logical Clocks
@@ -81,7 +84,9 @@ This paper mainly covers the following part.
 
 Following is the reading notes for each section
 
-\subsection{Introduction}
+\subsection{Introduction} \label{s:intro}
+
+\subsubsection{Definition of Distributed Systems} \label{s:intro:s:dist}
 
 \begin{quote}
   A distributed system consists of a collection of distinct processes which are
@@ -90,24 +95,30 @@ spatially separated, and which communicate with one another by exchanging messag
 to the time between events in a single process.\cite{l} \\
 
 % TODO: right align and add a horizontal line
-\textit{Leslie Lamport}
+--\ \textit{Leslie Lamport}
 \end{quote}
 
 The order of event is simple if we only consider physical time, like I woke on 8:00AM happens before
 I eat my breakfast on 8:30AM.
 But communication takes time due to spatial separation or other facts.
 
-% TODO: a real word example
-% FIXME: this example still feels quite wired
-I woke up on 8:00AM, send a message to Jack on 8:05AM and ate breakfast on 8:10AM, Jack saw the message
-on 8:30AM.
+% FIXME: this example feels quite wired, sth wrong
+A real world example:
+I woke up on 8:00AM, send a message to Jack on 8:05AM and ate breakfast on 8:10AM,
+Jack saw the message on 8:30AM.
 So although in physical time breakfast \textit{happens before} Jack saw the message, they are \textit{concurrent}
-in the view of the system.
+in the view of the system. Jack don't know I was having breakfast on 8:10AM. %TODO: even if I tell him I will
+% eat on 8:10 and he got message 8:05, he just know I will do, but don't know I really did unless I send him
+% another message
 
 \subsection{The Partial Ordering} \label{PO}
 
+\subsubsection{Definition of Order} \label{s:PO:DO}
+
 Order need to be observed with the system.
 Physical clocks are not perfectly accurate and do not keep precise physical time\cite{l}.
+
+\medskip
 
 Define \textit{happens before} ($\rightarrow$) as following
 
