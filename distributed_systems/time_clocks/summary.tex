@@ -24,9 +24,53 @@
 
 \maketitle
 
+\begin{abstract}
+
+This is a paper summary for Time, Clocks, and the Ordering of Events in a Distributed System\cite{lamport1978time} by Lamport\footnote{\url{https://en.wikipedia.org/wiki/Leslie_Lamport}}.
+It is the assignment of CMPS232-Fall16\footnote{\url{https://github.com/palvaro/CMPS232-Fall16}}.
+
+\end{abstract}
+
+
 \section{Paper walk through}
 
-let's walk it through
+This paper mainly covers the following part.
+
+\begin{enumerate}
+  \item The Partial Ordering
+  \begin{enumerate}
+      \item Definition of order, what is \textit{happens before}, Symbol $\rightarrow$. % the arrow http://garsia.math.yorku.ca/MPWP/LATEXmath/node9.html
+      \item space-time diagram
+  \end{enumerate}
+  \item Logical Clocks
+  \begin{enumerate}
+      \item 2 Clock Condition, one inside process (C1), one between process, measured by message (C2).
+      \item improved and 3-D space-time diagram.
+      \item 2 Implementation Rule, one inside process (IR1), one between process , measured by message, $T_m = C_i<a>$ (IR2).
+  \end{enumerate}
+  \item Ordering the Events Totally
+  \begin{enumerate}
+      \item Definition of total ordering using Logical Clock and order among processes, Symbol $\Rightarrow$
+      \item Solve mutual exclusion problem, fixed number of processes share a single resource.
+      \item Specify the synchronization as a State Machine.
+      \item Pitfall, handling failure (related paper is referred).
+  \end{enumerate}
+  \item Anomalous Behavior
+  \begin{enumerate}
+      \item Precedence information based on messages external to the system cause anomalous behavior.
+      \item Solution 1, \textit{explicitly introduce info about the ordering $\rightarrow$ to the system} by user.
+      \item Solution 2, Strong Clock Condition, thus use Physical Clocks to eliminate anomalous behavior.
+  \end{enumerate}
+  \item Physical Clocks
+  % TODO: this part is a lot harder, and I skipped the Proof of the Theorem in appendix /w\
+  \begin{enumerate}
+      \item Requirements for the clock, individual (PC1), between clocks, small variation (PC2).
+      \item Requirements for preventing anomalous behavior.
+      \item Algorithm to ensure PC2, clock synchronization.
+      \item The length of time for synchronizing clocks.
+  \end{enumerate}
+\end{enumerate}
+
 
 \section{Simple implementation}
 
@@ -74,8 +118,8 @@ I want to cite\cite{lamport1978time}
 
 \subsection{Terms} \label{l1}
 
-Since all the terms I learned about math was in Chinese. I need to review some basic
-terms when it comes to proof etc.
+Since most terms I learned about math and computer science was in Chinese. I found a lot of terms blocking
+me from understanding this paper, so are listed them below for fellow students whose mother language is not English.
 
 \medskip
 
@@ -88,13 +132,23 @@ Given a statement $if\ p, then\ q$, $p$ is called hypothesis, $q$ is called $con
     \item Contrapositive $if\ not q, then\ not\ p$
 \end{itemize}
 
-if and only if
+If the statement is true, then the contrapositive is also true.
+And the inverse is the contrapositive for the converse, so if the inverse is true, the converse is true.
 
-mutex, mutual exclusion
+\medskip
+
+% FIXME: this website has annoying ads, why its the first result in google
+Mutual Exclusion\footnote{\url{https://www.techopedia.com/definition/25629/mutual-exclusion-mutex}}
+also known as mutex, which you may have heard it when reading books about multithread.
+It is \textit{a program object that prevents simultaneous access to a shared resource}.
 
 \subsection{Video and Slides}
 
 TBD: from https://github.com/at15/CMPS232/issues/6
+
+\section{Changelog}
+
+TBD:
 
 \printbibliography
 
