@@ -4,8 +4,8 @@ For CMPS232 Fall16
 
 ## TODO
 
-- [ ] format and cleanup, add TBD etc.
-- [ ] write the review and questions for the assignment.
+- [x] format and cleanup, add TBD etc.
+- [ ] write the review and questions for the assignment in MD
 - [ ] submit on easychair.
 - [ ] watch the video from udacity/youtube and finish the summary.
 

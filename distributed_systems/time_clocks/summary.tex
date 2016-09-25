@@ -9,16 +9,8 @@
 \usepackage{listings}
 % FIXME: the font is really strange
 \usepackage[T1]{fontenc}
-
 \setlength\parindent{0pt}
-
 \addbibresource{summary.bib}
-
-% What problem does the paper solve? Is is important?
-% How does it solve the problem?
-% What alternative approaches are there? Are they adequately discussed in the reading?
-% How does this work relate to other research, whether covered in this course or not?
-% What specific research questions, if any, does the paper raise for you?
 
 \title{Summary for: Time, Clocks, and the Ordering of Events in a Distributed System}
 \author{Pinglei Guo}
@@ -55,14 +47,14 @@ This paper mainly covers the following part.
   \end{enumerate}
   \item Logical Clocks
   \begin{enumerate}
-      \item 2 Clock Condition, one inside process (C1), one between process, measured by message (C2).
+      \item \ref{s:LC:s:CC} Two Clock Condition, one inside process (C1), one between process, measured by message (C2).
       \item improved and 3-D space-time diagram.
-      \item 2 Implementation Rule, one inside process (IR1), one between process , measured by message, $T_m = C_i\langle a \rangle$ (IR2).
+      \item \ref{s:LC:s:IR} Two Implementation Rule, one inside process (IR1), one between process , measured by message, $T_m = C_i\langle a \rangle$ (IR2).
   \end{enumerate}
   \item Ordering the Events Totally
   \begin{enumerate}
-      \item Definition of total ordering using Logical Clock and order among processes, Symbol $\Rightarrow$
-      \item Solve mutual exclusion problem, fixed number of processes share a single resource.
+      \item \ref{s:TO:s:DTO} Definition of total ordering using Logical Clock and order among processes, Symbol $\Rightarrow$
+      \item \ref{s:TO:s:ME} Solve mutual exclusion problem, fixed number of processes share a single resource.
       \item Specify the synchronization as a State Machine.
       \item Pitfall, handling failure (related paper is referred).
   \end{enumerate}
@@ -142,11 +134,13 @@ Define \textit{Clock} $C$ as following\cite{l}
   \item function $C$ represents the entire system of clocks, so $C\langle b \rangle = C_i \langle b \rangle$ if $b$ is an event in process $P_i$.
 \end{itemize}
 
+\subsubsection{Clock Condition} \label{s:LC:s:CC}
+
 Define \textit{Clock Condition} as following
 
 \medskip
 
-For any events $a, b$: if $a \rightarrow b$ then $C\langle a \rangle < C\langle b \rangle$
+\ \ \ \ For any events $a, b$: if $a \rightarrow b$ then $C\langle a \rangle < C\langle b \rangle$
 
 \medskip
 
@@ -156,6 +150,8 @@ By extending \ref{PO1} and \ref{PO2} in \ref{PO} we have
   \item \label{C1} C1. If $a$ and $b$ are events in process $P_i$, and $a$ comes before $b$, then $C\langle a \rangle < C\langle b \rangle$\cite{l}
   \item \label{C2} C2. If message is sent from process $a$ to $b$, then $C\langle a \rangle < C\langle b \rangle$\
 \end{enumerate}
+
+\subsubsection{Implementation Rule} \label{s:LC:s:IR}
 
 By extending \ref{C1} and \ref{C2} we have the implementation rule
 
@@ -170,6 +166,8 @@ By extending \ref{C1} and \ref{C2} we have the implementation rule
 \end{enumerate}
 
 \subsection{Ordering the Event Totally} \label{TO}
+
+\subsubsection{Definition of Total Ordering} \label{s:TO:s:DTO}
 
 % TODO: use href here to avoid the awkward section number.
 By extending partial ordering \ref{PO}, we have total ordering defined as following.
@@ -189,6 +187,8 @@ Thus result in different total ordering relations $\Rightarrow$ for a unique par
 
 % TODO: use subsubsection for the example, may use subsubsection for all of them
 
+\subsubsection{Solve Mutual Exclusion} \label{s:TO:s:ME}
+
 A fixed number of processes share a single resource. The algorithm must satisfies the following
 
 \begin{enumerate}
@@ -203,8 +203,9 @@ If the central merely grant process resource based on the order it receive reque
 shorter than time between actions inside a process.
 % TODO:
 TODO: will add timestamp on request and message fix this.
-
 % > we implementation a system of clocks with rules IR1 and IR2 and use them to define a total ordering => of all events
+
+\medskip
 
 Assumptions to avoid implementation details\footnote{Using id, retry and ACK like in TCP can avoid those assumptions}
 
@@ -242,81 +243,48 @@ Following five rules are defined.
   \end{enumerate}
 \end{enumerate}
 
-TBD: state machine
+TBD: state machine \\
 TBD: Pitfalll and tolerant
 
 \subsection{Anomalous Behavior}
 
+TBD
+
 \subsection{Physical Clocks}
+
+TBD
 
 \section{Simple implementation}
 
-Some simple C code could do that
+TBD \\
+Example: \url{https://neerajkumar.wikispaces.com/file/view/DS+LAB+MANUAL_ECS701.pdf}
 
-\begin{lstlisting}[language=C]
-#include <stdio>
-
-int main(char* args){
-  print("Hello Clock!")
-}
-\end{lstlisting}
-
-\section{Discussion}
-
-\subsection{Problem solved}
-
-It solved the following problems
-
-determine order partially and totally. % TODO: why is this important
-
-The paper solve the problem of total ordering in distributed system.
-It is, because it can solve many synchronization problems.
-
-By introducing logical clocks and a method to adjust physical clocks.
-
-\subsection{Alternative}
-
-No, no alternative for logical clocks. Oops I guess there are, things
-like vector clock and stuff may work LOL. believe it or not.
-
-\section{Related research}
-
-
-Too many related researches
-
-You can find more in \ref{l1}
-You can also use page \pageref{l1}
-
-\section{Q\&A}
-
-% TODO: got this question when writing the introduction part
-Q: When deal with message, the 'time' of send and receive message is regarded as same timestamp? \\
-A: The clock must ticks between the message,  % TODO: find the pos in paper
-
-
-Q: How visualize the space-time diagram to 3D \\
-A: IDK
-
-Q: Logic clock ticks based on event, but it's kind of like the question of chicken and eggs, so where the timestamp comes from.
-If we use the counter, do we need a central counter, or each of them just use their own and then adjust
-A: IDK
-
-Q: What if the processes number changes dynamically, some quit some join. The paper mentioned the least time required for all the
-clocks in the system to synchronize. Can it be extended to the above situation.
-A: IDK
-
-The example in this paper use a lot of assumptions to simplify the proof.
-In real world applications, how engineers deal with these assumptions like messages
-arrive in order.
-
-I want to cite\cite{l}
+% Some simple C code could do that
+%
+% \begin{lstlisting}[language=C]
+% #include <stdio>
+%
+% int main(char* args){
+%   print("Hello Clock!")
+% }
+% \end{lstlisting}
 
 \section{Supplemental Materials}
+
+\subsection{Video and Slides}
+
+\begin{itemize}
+  \item Udacity \url{https://www.youtube.com/watch?v=z2oY8LWHYq8}
+  \item Papers we love: Time clocks and the reordering of events PWL SF 14-Jul-2016 Video: \url{https://www.youtube.com/watch?v=CWF3QnfihL4\&t=1953s}
+  \item Papers we love: Time clocks and the reordering of events PWL SF 14-Jul-2016 Slide: \url{https://speakerdeck.com/pborrill/time-clocks-and-the-reordering-of-events-pwl-san-francisco-14-jul-2016}
+\end{itemize}
+
+More can be found on https://github.com/at15/CMPS232/issues/6, thanks to @czheo.
 
 \subsection{Terms} \label{l1}
 
 Since most terms I learned about math and computer science was in Chinese. I found a lot of terms blocking
-me from understanding this paper, so are listed them below for fellow students whose mother language is not English.
+me from understanding this paper, so I listed them below for fellow students whose mother language is not English.
 
 \medskip
 
@@ -347,13 +315,66 @@ It is \textit{a program object that prevents simultaneous access to a shared res
 An order that does not have a standard. You can order it by the way you want as long as you a order at last.
 It is mentioned in \ref{TO} for ordering processes in total ordering.
 
-\subsection{Video and Slides}
+\section{Discussion}
 
-TBD: from https://github.com/at15/CMPS232/issues/6
+% What problem does the paper solve? Is is important?
+% How does it solve the problem?
+% What alternative approaches are there? Are they adequately discussed in the reading?
+% How does this work relate to other research, whether covered in this course or not?
+% What specific research questions, if any, does the paper raise for you?
+
+\subsection{Problem solved}
+
+Determine order partially and totally. % TODO: why is this important
+
+The paper solve the problem of total ordering in distributed system.
+It is important, because it can solve many synchronization problems.
+
+By introducing logical clocks and a method to adjust physical clocks.
+
+\subsection{Alternative}
+
+No, no alternative for logical clocks. Oops I guess there are, things
+like vector clock and stuff may work LOL. Saw them from blog posts when googling.
+
+\section{Related research}
+
+Too many related researches
+
+\section{Q\&A}
+
+% TODO: got this question when writing the introduction part
+Q: When deal with message, the 'time' of send and receive message is regarded as same timestamp? \\
+A: The clock must ticks between the message,  % TODO: find the pos in paper
+
+\medskip
+
+Q: How visualize the space-time diagram to 3D \\
+A: IDK
+
+\medskip
+
+Q: Logic clock ticks based on event, but it's kind of like the question of chicken and eggs, so where the timestamp comes from.
+If we use the counter, do we need a central counter, or each of them just use their own and then adjust. \\
+A: IDK
+
+\medskip
+
+Q: What if the processes number changes dynamically, some quit some join. The paper mentioned the least time required for all the
+clocks in the system to synchronize. Can it be extended to the above situation. \\
+A: IDK
+
+\medskip
+
+Q: The example in this paper use a lot of assumptions to simplify the proof.
+In real world applications, how engineers deal with these assumptions like messages
+arrive in order. \\
+A: IDK
 
 \section{Changelog}
 
 \begin{itemize}
+  \item 09/25/2016 15:17 \ Adjust layout and section order
   \item 09/25/2016 14:03 \ Finish most part of paper walk through.
   \item 09/24/2016 00:00 \ Initial version.
 \end{itemize}
