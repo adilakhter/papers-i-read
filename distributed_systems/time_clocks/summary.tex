@@ -2,9 +2,9 @@
 \usepackage[a4paper,left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
-\usepackage{hyperref}
+\usepackage{hyperref} % for auto jump
 \usepackage{amsmath}
-\usepackage{centernot}
+\usepackage{centernot} % for \ on -> \centernot\rightarrow generates does not imply
 % For code highlight
 \usepackage{listings}
 % FIXME: the font is really strange
@@ -121,7 +121,7 @@ Define \textit{happens before} ($\rightarrow$) as following
   \item $if\ a \centernot\rightarrow b\ and\ b \centernot\rightarrow a$, then a is \textit{concurrent} with b.
 \end{enumerate}
 
-\subsection{Logical Clocks}
+\subsection{Logical Clocks} \label{LC}
 
 Define \textit{Clock} $C$ as following\cite{l}
 
@@ -148,7 +148,7 @@ By extending \ref{PO1} and \ref{PO2} in \ref{PO} we have
 
 By extending \ref{C1} and \ref{C2} we have the implementation rule
 
-% TODO: IMPL 
+% TODO: IMPL
 \begin{enumerate}
   \item \label{IR1} IR1. Each process $P_i$ increments $C_i$ between any two successive events\cite{l}.
   \item \label{IR2} IR2.
@@ -158,7 +158,81 @@ By extending \ref{C1} and \ref{C2} we have the implementation rule
   \end{enumerate}
 \end{enumerate}
 
-\subsection{Ordering the Event Totally}
+\subsection{Ordering the Event Totally} \label{TO}
+
+% TODO: use href here to avoid the awkward section number.
+By extending partial ordering \ref{PO}, we have total ordering defined as following.
+
+\medskip
+
+$a \Rightarrow b$ if and only if one of the following is satisfied
+
+\begin{enumerate}
+  \item $C\langle a \rangle < C\langle b \rangle$
+  % TODO: the arbitrary order part
+  \item $C\langle a \rangle = C\langle b \rangle$ and $P_i \prec P_j$
+\end{enumerate}
+
+Order between processes is used to break ties and any order $\prec$ can be used\footnote{$\prec$ can by any arbitrary order, see \ref{term:arbitrary_order}}.
+Thus result in different total ordering relations $\Rightarrow$ for a unique partial ordering relation $\rightarrow$.
+
+% TODO: use subsubsection for the example, may use subsubsection for all of them
+
+A fixed number of processes share a single resource. The algorithm must satisfies the following
+
+\begin{enumerate}
+  \item Unless the process using the resource release it, other process cannot be granted.
+  \item Requests for the resources are fulfilled in the order they are made.
+  \item If every process which is granted the resource eventually releases it, then every request is eventually granted\cite{l}.
+\end{enumerate}
+
+A simple centralize solution won't work. ie: $P_1$ send a request (a) and then a message to $P_2$ (b), $P_2$ receive the message (c) and also send a request (d).
+we have $a \rightarrow b \rightarrow c \rightarrow d$, so $P_1$ should get the resource first. But it's possible $P_2$'s request arrive before $P_1$.
+If the central merely grant process resource based on the order it receive requests, it can only be correct when all messages and requests are delivered in a time
+shorter than time between actions inside a process.
+% TODO:
+TODO: will add timestamp on request and message fix this.
+
+% > we implementation a system of clocks with rules IR1 and IR2 and use them to define a total ordering => of all events
+
+Assumptions to avoid implementation details\footnote{Using id, retry and ACK like in TCP can avoid those assumptions}
+
+\begin{enumerate}
+  \item Message will not be dropped.
+  \item Message between two processes are received in the order they are sent
+  % TODO: what if there are levels between process and block them from talking to processes in other levels.
+  \item A process can send message directly to every other process
+\end{enumerate}
+
+Each process has a private message queue with initial value of $T_0:P_0$, while $P_0$ is the chosen one and
+$T_0$ is less than the initial value of any clock.
+
+Following five rules are defined.
+
+\begin{enumerate}
+  % TODO: how to obtain the timestamp
+  \item $P_i$ send $T_m:P_i$ request to ALL the processes (include itself, which means put it in its own queue directly),
+  where $T_m$ is the timestamp of the message obtained from the clock $C_i$.
+  % TODO: not sure about the reason for ignore ack, kind of circular explanation
+  \item $P_j$ put message $T_m:P_i$ in its queue when he receive it and sent an ACK to $P_i$. The ACK can be ignored if
+  $P_j$ has sent $P_i$ a message $T_n:P_j$ where $T_m < T_n$. (Because the clock only ticks when there is event)
+  % TODO: will there be multiple Tm:Pi in request queue
+  % TODO: what's the timestamp for the release, Tm or the time of release.
+  \item To release the resource, process $P_i$ removes any $T_m:P_i$ requests in its queue and send a (timestamped) $P_i$
+  release to every other process\cite{l}.
+  \item When $P_j$ receive a $P_i$ release message, it removes any $T_m:P_i$ request from its queue.
+  % TODO: one of  OR all, it's all
+  \item Resource is granted to $P_i$ when all the following conditions are satisfied
+  \begin{enumerate}
+    % It's time for me
+    \item There is a $T_m:P_i$ request in its queue, with $T_m$ $\Rightarrow$ all the other requests' timestamps.
+    % Know all the other process
+    \item $P_i$ has received from ALL the other processes a message with timestamp later than $T_m$
+  \end{enumerate}
+\end{enumerate}
+
+TBD: state machine
+TBD: Pitfalll and tolerant
 
 \subsection{Anomalous Behavior}
 
@@ -212,6 +286,14 @@ A: The clock must ticks between the message,  % TODO: find the pos in paper
 Q: How visualize the space-time diagram to 3D \\
 A: IDK
 
+Q: Logic clock ticks based on event, but it's kind of like the question of chicken and eggs, so where the timestamp comes from.
+If we use the counter, do we need a central counter, or each of them just use their own and then adjust
+A: IDK
+
+Q: What if the processes number changes dynamically, some quit some join. The paper mentioned the least time required for all the
+clocks in the system to synchronize. Can it be extended to the above situation.
+A: IDK
+
 The example in this paper use a lot of assumptions to simplify the proof.
 In real world applications, how engineers deal with these assumptions like messages
 arrive in order.
@@ -229,8 +311,9 @@ me from understanding this paper, so are listed them below for fellow students w
 
 % TODO: may use subsubsection
 
-Converse, Inverse, Contrapositive\footnote{\url{http://hotmath.com/hotmath_help/topics/converse-inverse-contrapositive.html}}.
-Given a statement $if\ p, then\ q$, $p$ is called hypothesis, $q$ is called $conclusion$.
+\subsubsection{Converse, Inverse, Contrapositive}
+
+Given a statement $if\ p, then\ q$, $p$ is called hypothesis, $q$ is called $conclusion$.\footnote{\url{http://hotmath.com/hotmath_help/topics/converse-inverse-contrapositive.html}}.
 
 \begin{itemize}
     \item Converse  $if\ q, then\ p$
@@ -241,12 +324,17 @@ Given a statement $if\ p, then\ q$, $p$ is called hypothesis, $q$ is called $con
 If the statement is true, then the contrapositive is also true.
 And the inverse is the contrapositive for the converse, so if the inverse is true, the converse is true.
 
-\medskip
+\subsubsection{Mutual Exclusion}
 
 % FIXME: this website has annoying ads, why its the first result in google
-Mutual Exclusion\footnote{\url{https://www.techopedia.com/definition/25629/mutual-exclusion-mutex}}
-also known as mutex, which you may have heard it when reading books about multithread.
+Mutual Exclusion\footnote{\url{https://www.techopedia.com/definition/25629/mutual-exclusion-mutex}} is also known as mutex,
+which you may have heard when reading books about multithread.
 It is \textit{a program object that prevents simultaneous access to a shared resource}.
+
+\subsubsection{Arbitrary order} \label{term:arbitrary_order}
+
+An order that does not have a standard. You can order it by the way you want as long as you a order at last.
+It is mentioned in \ref{TO} for ordering processes in total ordering.
 
 \subsection{Video and Slides}
 
@@ -255,7 +343,8 @@ TBD: from https://github.com/at15/CMPS232/issues/6
 \section{Changelog}
 
 \begin{itemize}
-  \item 09/25/2016 \ Initial version
+  \item 09/25/2016 14:03 \ Finish most part of paper walk through.
+  \item 09/24/2016 00:00 \ Initial version.
 \end{itemize}
 
 \printbibliography
