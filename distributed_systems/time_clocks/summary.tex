@@ -3,6 +3,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
 \usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{centernot}
 % For code highlight
 \usepackage{listings}
 % FIXME: the font is really strange
@@ -26,17 +28,23 @@
 
 \begin{abstract}
 
-This is a paper summary for Time, Clocks, and the Ordering of Events in a Distributed System\cite{lamport1978time} by Lamport\footnote{\url{https://en.wikipedia.org/wiki/Leslie_Lamport}}.
+This is a paper summary for Time, Clocks, and the Ordering of Events in a Distributed System\cite{l} by Lamport\footnote{\url{https://en.wikipedia.org/wiki/Leslie_Lamport}}.
 It is the assignment of CMPS232-Fall16\footnote{\url{https://github.com/palvaro/CMPS232-Fall16}}.
+% TODO: better 1-2 line summary
+In this paper Lamport introduced logical clocks for ordering event totally thus solving synchronization problems like mutual exclusion.
+It is widely used in both academy and industry.
 
 \end{abstract}
-
 
 \section{Paper walk through}
 
 This paper mainly covers the following part.
 
 \begin{enumerate}
+  \item Introduction
+  \begin{itemize}
+    \item Definition of Distributed Systems
+  \end{itemize}
   \item The Partial Ordering
   \begin{enumerate}
       \item Definition of order, what is \textit{happens before}, Symbol $\rightarrow$. % the arrow http://garsia.math.yorku.ca/MPWP/LATEXmath/node9.html
@@ -71,6 +79,52 @@ This paper mainly covers the following part.
   \end{enumerate}
 \end{enumerate}
 
+Following is the reading notes for each section
+
+\subsection{Introduction}
+
+\begin{quote}
+  A distributed system consists of a collection of distinct processes which are
+spatially separated, and which communicate with one another by exchanging messages. \\
+  A system is distributed if the message transmission delay is not negligible compared
+to the time between events in a single process.\cite{l} \\
+
+% TODO: right align and add a horizontal line
+\textit{Leslie Lamport}
+\end{quote}
+
+The order of event is simple if we only consider physical time, like I woke on 8:00AM happens before
+I eat my breakfast on 8:30AM.
+But communication takes time due to spatial separation or other facts.
+
+% TODO: a real word example
+% FIXME: this example still feels quite wired
+I woke up on 8:00AM, send a message to Jack on 8:05AM and ate breakfast on 8:10AM, Jack saw the message
+on 8:30AM.
+So although in physical time breakfast \textit{happens before} Jack saw the message, they are \textit{concurrent}
+in the view of the system.
+
+\subsection{The Partial Ordering}
+
+Order need to be observed with the system.
+Physical clocks are not perfectly accurate and do not keep precise physical time\cite{l}.
+
+Define \textit{happens before} ($\rightarrow$) as following
+
+\begin{itemize}
+  \item Inside a process, $\rightarrow$ is just like physical time.
+  \item If message is sent from process $a$ to $b$, $a \rightarrow b$.
+  \item $if\ a \rightarrow b\ and\ b \rightarrow c, then\ a \rightarrow c$.
+  \item $if\ a \centernot\rightarrow b\ and\ b \centernot\rightarrow a$, then a is \textit{concurrent} with b.
+\end{itemize}
+
+\subsection{Logical Clocks}
+
+\subsection{Ordering the Event Totally}
+
+\subsection{Anomalous Behavior}
+
+\subsection{Physical Clocks}
 
 \section{Simple implementation}
 
@@ -80,13 +134,17 @@ Some simple C code could do that
 #include <stdio>
 
 int main(char* args){
-  print("Hello world?")
+  print("Hello Clock!")
 }
 \end{lstlisting}
 
 \section{Discussion}
 
 \subsection{Problem solved}
+
+It solved the following problems
+
+determine order partially and totally. % TODO: why is this important
 
 The paper solve the problem of total ordering in distributed system.
 It is, because it can solve many synchronization problems.
@@ -108,11 +166,15 @@ You can also use page \pageref{l1}
 
 \section{Q\&A}
 
+% TODO: got this question when writing the introduction part
+Q: When deal with message, the 'time' of send and receive message is regarded as same timestamp?
+A: The clock must ticks between the message,  % TODO: find the pos in paper
+
 The example in this paper use a lot of assumptions to simplify the proof.
 In real world applications, how engineers deal with these assumptions like messages
 arrive in order.
 
-I want to cite\cite{lamport1978time}
+I want to cite\cite{l}
 
 \section{Supplemental Materials}
 
@@ -122,6 +184,8 @@ Since most terms I learned about math and computer science was in Chinese. I fou
 me from understanding this paper, so are listed them below for fellow students whose mother language is not English.
 
 \medskip
+
+% TODO: may use subsubsection
 
 Converse, Inverse, Contrapositive\footnote{\url{http://hotmath.com/hotmath_help/topics/converse-inverse-contrapositive.html}}.
 Given a statement $if\ p, then\ q$, $p$ is called hypothesis, $q$ is called $conclusion$.
@@ -148,7 +212,9 @@ TBD: from https://github.com/at15/CMPS232/issues/6
 
 \section{Changelog}
 
-TBD:
+\begin{itemize}
+  \item 09/25/2016 \ Initial version
+\end{itemize}
 
 \printbibliography
 
