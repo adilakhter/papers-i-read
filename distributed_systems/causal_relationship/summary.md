@@ -66,4 +66,55 @@ underlying distributed computation.
 consistent - if
 characterize - if and only if aka. iff
 
-P7 **Definition 3.2** How to compare vector time 
+P7 **Definition 3.2** How to compare vector time
+
+### 3.2 Real Time and Lamport Time
+
+Lamport's happens before ... is somewhat misleading
+
+ideal real time consistent with causality, but does not characterize causality
+
+P8 **Definition 3.5** The Lamport Time
+
+Lamport Time is insufficient to characterize causality.
+
+## 4. Efficient Realizations of Vector Time
+
+Drawback, size  -> efficient realization
+
+### 4.1 Compressing Message Timestamps
+
+observation -> the diff of vectors are small
+
+impl of vector clocks, save bandwidth by increase storage
+
+when send new message to P_j, only send the diff of the previous message. FIFO is
+required. (The message can contains ID I guess)
+
+Drawback of compress, lose immediate access to compare casual relationship between messages.
+But full information can be recovred with O(N^2) space
+
+### 4.2 Reconstructing Time Vectors
+
+- length of msg still linear in worst case.
+- more computation, not acceptable for running system but can be used for a trace based off-line analysis.
+
+skip this part, yeah!
+
+### 4.3 Size of the vector clocks
+
+can't be smaller than N, still open problem
+
+## 5. Characterizing Concurrency with Concurrent Regions
+
+vector time can be used by too complex, so find another approach called concurrent region
+
+concurrency map and dependence block
+
+P18 concurrency map implicitly represents all possible total orderings which are consistent with causality.
+
+### 5.2 Identifying Concurrent Regions with Region Numbers
+
+region numbers must have essentially the same complexity as time vectors
+
+## Evaluating Global Predicates
