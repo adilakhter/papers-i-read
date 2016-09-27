@@ -1,0 +1,117 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper,left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\usepackage{hyperref}
+% For code highlight
+\usepackage{listings}
+% FIXME: the font is really strange
+\usepackage[T1]{fontenc}
+
+\addbibresource{summary.bib}
+
+% What problem does the paper solve? Is is important?
+% How does it solve the problem?
+% What alternative approaches are there? Are they adequately discussed in the reading?
+% How does this work relate to other research, whether covered in this course or not?
+% What specific research questions, if any, does the paper raise for you?
+
+\title{Summary for: Time, Clocks, and the Ordering of Events in a Distributed System}
+\author{Pinglei Guo}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Paper walk through}
+
+First introduce the order, what is `happen after` in distributed system, which
+leads to logic clock
+
+\section{Simple implementation}
+
+Some simple C code could do that
+
+You can write the code
+% e ... the code highlight sucks ....
+\begin{lstlisting}[language=Python]
+import numpy as np
+
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1)
+
+    for i in range(m-1):
+        for j in range(i+1, m):
+            [r,c] = np.where(M2 == M1[i,j])
+            for k in range(len(r)):
+                VT[(i)*n + r[k]] = 1;
+                VT[(i)*n + c[k]] = 1;
+                VT[(j)*n + r[k]] = 1;
+                VT[(j)*n + c[k]] = 1;
+
+                if M is None:
+                    M = np.copy(VT)
+                else:
+                    M = np.concatenate((M, VT), 1)
+
+                VT = np.zeros((n*m,1), int)
+
+    return M
+\end{lstlisting}
+
+or include a file (Chinese is not supported .... don't need to figure it out now, so just leave it)
+
+\lstinputlisting[
+  language = C
+]{demo.c}
+
+
+\section{Discussion}
+
+\subsection{Problem solved}
+
+The paper solve the problem of total ordering in distributed system.
+It is, because it can solve many synchronization problems.
+
+By introducing logical clocks and a method to adjust physical clocks.
+
+\subsection{Alternative}
+
+No, no alternative for logical clocks. Oops I guess there are, things
+like vector clock and stuff may work LOL. believe it or not.
+
+\section{Related research}
+
+You can find more in \ref{l1}
+You can also use page \pageref{l1}
+
+\section{Q\&A}
+
+The example in this paper use a lot of assumptions to simplify the proof.
+In real world applications, how engineers deal with these assumptions like messages
+arrive in order.
+
+
+You can jump to me
+
+I want to cite\cite{lamport1978time}
+
+\section{Supplemental Materials}
+
+\subsection{Terms} \label{l1}
+
+\subsection{Video and Slides}
+
+\printbibliography
+
+\end{document}
+
+This is never printed

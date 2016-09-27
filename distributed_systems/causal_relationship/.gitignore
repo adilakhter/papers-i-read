@@ -1,0 +1,9 @@
+*.aux
+*.log
+*.out
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+holygrail.pdf
+summary.pdf

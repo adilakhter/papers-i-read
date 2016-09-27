@@ -1,0 +1,5 @@
+scripts:
+  bib: biber summary
+  # build: xelatex summary && biber summary &&  xelatex summary
+  build: xelatex summary
+  clean: rm *.aux *.log *.out *.bbl *.bcf *.blg *.xml *.xdv *.pdf
