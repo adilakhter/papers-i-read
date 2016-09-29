@@ -14,23 +14,22 @@ see [summary.md](summary.md)
 
 Strong points
 
-- good graphs, they take a lot space, so the paper is really not that long. And take
-those implementation detail into consideration, it does not take a long time to read.
-- TBD
-- TBD
+- make remote call like local call can reduce the burden of programmers (when you don't consider robust and scale)
+- good graphs, they take a lot space, the paper is really not that long as it seems.
+- If you don't care much about those implementation details, it's a clean and straight forward paper.
+
 
 Weak points
 
+- read like a product report
 - The hardware is pretty old compared with what we have these days
-- Too much language or platform specific features are used ie: `RPCRuntime is a standard part of the Cedar system`, `These are the basis of the Mesa`. The author is assuming
-readers know their stack well. However it is possible that it's the defacto stack at that
-time.
-- It's more close to engineering, (too much) detail of implementation are included. ie: in binding->naming->Grapevine DB. It may be good for programmers at that time but since I never heard of the DB and the language and their feature-rich system Cedar, I find it boring and weaken the point of the paper.
+- Too much language or platform specific features are used ie: `RPCRuntime is a standard part of the Cedar system`, `These are the basis of the Mesa`. The author is assuming readers know their stack well. However it is possible that what they use was the defacto stack at that time.
+- security is their second feature, but it's in subsection with only one paragraph
 
 Questions
 
-- In intro->structure->binding, it mentioned naming, is this the same `naming` appeared in reading list topic.
-- TBD
+- In intro->structure->binding, it mentioned naming, is this the same `naming` appeared in reading list topic? (NO)
+- Does this paper give you the desire to read the opposing paper? (Yes)
 - TBD
 
 ## Supplemental

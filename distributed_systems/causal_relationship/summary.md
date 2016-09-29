@@ -118,3 +118,5 @@ P18 concurrency map implicitly represents all possible total orderings which are
 region numbers must have essentially the same complexity as time vectors
 
 ## Evaluating Global Predicates
+
+it's possible 

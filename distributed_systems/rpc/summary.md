@@ -45,3 +45,23 @@ stub pack and upack argument and result
 - also use Grapevine
 
 ## 3 Packet Level Transport Protocol
+
+### 3.1 Requirement
+
+### 3.2 Simple Calls
+
+### 3.3 Complicated Calls
+
+### 3.4 Exception handling
+
+### 3.5 Use of Processes
+
+### 3.6 Other optimization
+
+### 3.7 security ?
+
+just a sub chapter ?.....
+
+## Performance
+
+## Status and Discussion 
