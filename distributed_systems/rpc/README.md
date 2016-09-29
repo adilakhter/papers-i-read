@@ -1,15 +1,12 @@
-# RPC & Anti-RPC
+# RPC
 
 For CMPS232 Fall16
 
 - [Implementing Remote Procedure Calls](http://www.cs.virginia.edu/~zaher/classes/CS656/birrel.pdf)
-- [A Note on distributed computing](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.41.7628)
+
+Related to [anit-rpc](../anti-rpc)
 
 ## TODO
-
-- [ ] rpc
-- [ ] anti rpc
-
 
 ## Short summary
 
