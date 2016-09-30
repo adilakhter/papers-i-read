@@ -30,7 +30,8 @@ Questions
 
 - In intro->structure->binding, it mentioned naming, is this the same `naming` appeared in reading list topic? (NO)
 - Does this paper give you the desire to read the opposing paper? (Yes)
-- TBD
+- The aim of RPC is to let engineers work on large scale systems with little knowledge to distributed systems. Just like most libraries, frameworks, Sass do in these days. Engineers don't know much about the detail, they assemble
+everything together following the manual and then debug. However, if machine can read manual and manager's request like human do, do we still need most software engineers?
 
 ## Supplemental
 
