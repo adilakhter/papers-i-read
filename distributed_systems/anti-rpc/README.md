@@ -1,4 +1,4 @@
-# Anti-RPC
+# A Note on Distributed Computing (anti-rpc)
 
 For CMPS232 Fall16
 

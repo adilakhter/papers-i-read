@@ -1,4 +1,4 @@
-# Time, Clocks, and the Ordering of Events in a Distributed System
+# Detecting Causal Relationships in Distributed Computations: In Search of the Holy Grail
 
 For CMPS232 Fall16
 
