@@ -12,25 +12,29 @@ see [summary.md](summary.md)
 
 Strong points
 
-- TBD
+- The introduction shows the structure of each section. 
 - TBD
 - TBD
 
 Weak points
 
-- TBD
+- The first paragraph in introduction is verbose. 'to support continuous growth the platform needs to be highly scalable', 'to support continuous growth, the platform needs to be highly scalable'
 - TBD
 - TBD
 
 Questions
 
-- TBD
-- TBD
-- TBD
+- what is `application state` mentioned in introduction
+- what is consisting hashing
+- what is ... see the supplemental part, idk all of them
 
 
 ## Supplemental
 
-- 
+- synthesis: combination
+- [ ] consistent hashing
+- [ ] object versioning
+- [ ] quorum-like
+- [ ] gossip based ?
 
 ## Ref
