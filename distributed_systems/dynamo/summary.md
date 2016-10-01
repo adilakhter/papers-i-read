@@ -58,4 +58,83 @@ Main Contribution
 - systems design
 - implementation
 - experiences and insights from production
-- conclusion 
+- conclusion
+
+## 2. Background
+
+services
+
+- stateless (ie: aggregate)
+- stateful (relies on persistent store)
+
+why NOT RDBMS
+
+- they chose consistency over availability
+- overkill functionalities for querying by primary-key
+
+### 2.1 System Assumptions and Requirements
+
+Query Model:
+
+- identify by unique key
+- simple blob less than 1MB
+
+ACID Properties: ACID (Atomicity, Consistency, Isolation, Durability)
+
+- providing ACID means poor availability
+> Experience at Amazon has shown that data stores that provide ACID guarantees tend to
+have poor availability. This has been widely acknowledged by both the industry and academia [5].
+
+- weaker C -> HA
+- does NOT provide isolation guarantees and permits only single key updates
+
+Efficiency:
+
+- high SLA (99.9)
+- tradeoffs are in performance, cost efficiency, availability, and durability guarantees.
+
+- no security issues
+- scale up to hundreds of storage hosts.
+
+### 2.2 Service Level Agreements (SLA)
+
+Client and Server agree on several system related characteristics.
+
+- client's expected request rate distribution for a particular API.
+- expected service latency under those conditions
+
+To form a performance oriented SLA, describe it using
+
+- average
+- median
+- expected variance
+
+But, to ensure all customer have good experience, they use 99.9 percentile, not average.
+
+**Give services control over their system properties, let services make their own tradeoffs**
+
+### 2.3 Design Considerations
+
+strong consistency and high availability cannot be achieved simultaneously.
+
+use optimistic replication  -> conflicting changes that must be detected and resolved.
+- [ ] how to detect
+- when to resolve
+- who resolves them
+
+When to resolve
+
+- traditional DB prefers write, reject if can't reach most replicas at given time
+- for customer performance, 'always writable', resolve conflicts on read.
+
+Who resolves
+
+- data store -> last write wins
+- application -> resolve based on business logic
+
+Other key principles
+
+- incremental scalability
+- symmetry, simplifies the process of provisioning and maintenance
+- decentralization, p2p
+- heterogeneity, ie: work distribution must be proportional to the capabilities of the individual servers.
