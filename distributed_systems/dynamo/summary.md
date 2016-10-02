@@ -246,3 +246,44 @@ advantages
 - the number of virtual nodes can represents its capacity and heterogeneity in physical infrastructure.
 
 ### 4.3 Replication
+
+use the ring as well.
+
+> The list of nodes that is responsible for storing a particular key is called the preference list.
+> every node in the system can determine which nodes should be in this list for any particular key.
+
+### 4.4 Data Versioning
+
+applications like shopping cart can tolerate certain inconsistency.
+
+> Dynamo treats the result of each modification as a new and immutable version of the data. It allows for multiple versions of an object to be
+present in the system at the same time.
+
+version branching can happen, client must perform the reconciliation in order to collapse multiple branches of the data evolution back into one.
+
+> require design applications that explicitly acknowledge the possibility of multiple versions of the same data (in order not to lose any updates)
+
+**Dynamo uses vector clocks[12] in order to capture causality between different versions of the same object**
+
+- [ ] refer for [12] is Lamport's Logical clock, not vector clock.
+
+when client update **MUST specify the context**, which contains vector clock information.
+
+vector clock size can be big -> a truncation scheme -> may lead to inefficiencies -> but never surfaced in production -> no more investigation
+
+### 4.5 Execution of get() and put() operations
+
+for simplicity, first discuss fail free environment.
+
+- use http
+- request through a load balancer
+- request to a coordinator node directly
+
+- [x] where did they mention coordinator nodes?
+
+> A node handling read or write operations is known as the coordinator.
+Typically this is the fist among the top N nodes in the preference list.
+
+R + W involve the first N healthy nodes in the preference list, and lower rank nodes are used when node failure or network partition happen.
+
+### 4.6 Handling Failures: Hinted Handoff
