@@ -29,6 +29,9 @@ Questions
 - what is ... see the supplemental part, idk all of them
 - sec 2. Each service that uses Dynamo runs its own Dynamo instances.
 - sec 2.3 P2 how to detect replica conflicts, the paper only mentioned about how to resolve?
+- Oceanstore (https://oceanstore.cs.berkeley.edu/) is mentioned, from its website it seems it is a prototype and not used in production?
+- **what is the P2P network talked in the paper different from P2P software we use like BitTorrent, Emule**
+- Antiquity and its `Byzantine fault tolerance protocols` is mentioned, how does it do that?
 
 
 ## Supplemental
@@ -41,4 +44,8 @@ Questions
 - expected variance https://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/Chapter6.pdf
 - provisioning https://en.wikipedia.org/wiki/Provisioning
 - heterogeneity, difference, 多相性
+
 ## Ref
+
+- [Chord: A Scalable Peer-to-peer Lookup Service for Internet Applications](https://pdos.csail.mit.edu/papers/chord:sigcomm01/chord_sigcomm.pdf)
+- [Pastry: Scalable, decentralized object location and routing for large-scale peer-to-peer systems](http://research.microsoft.com/en-us/um/people/antr/PAST/pastry.pdf)

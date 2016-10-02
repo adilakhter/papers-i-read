@@ -122,6 +122,8 @@ use optimistic replication  -> conflicting changes that must be detected and res
 - when to resolve
 - who resolves them
 
+> Dynamo is designed to be an eventually consistent data store; that is all updates reach all replicas eventually
+
 When to resolve
 
 - traditional DB prefers write, reject if can't reach most replicas at given time
@@ -138,3 +140,82 @@ Other key principles
 - symmetry, simplifies the process of provisioning and maintenance
 - decentralization, p2p
 - heterogeneity, ie: work distribution must be proportional to the capabilities of the individual servers.
+
+## 3. Related work
+
+(this part is kind of an overview of existing solutions to similar topics?)
+
+### 3.1 Peer to Peer Systems
+
+First generation: unstructured P2P network, file sharing system like Freenet and Gnutella.
+Second generation: structured P2P network,
+> a global consistent protocol to ensure that any node can efficiently route a search query to some peer that has the desired data. Systems like `Pastry` and `Chord` (the next paper we are going to read) use routing to ensure that queries can be answered within a bounded number of hops
+
+- [Chord](http://web.mit.edu/6.033/2001/wwwdocs/handouts/dp2-chord.html)
+
+Oceanstore https://oceanstore.cs.berkeley.edu/
+
+- resolve conflict by processing a series of updates, choosing a total order among them, and then apply them atomically in that order.
+
+PAST provides a simple abstraction layer on top of Pastry
+
+### 3.2 Distributed File Systems and Databases
+
+- Ficus and Coda sacrifices consistency for HA
+- GFS use a single master server for hosting entire metadata
+- Bayou is a distributed relational database system that provides eventual data consistency
+
+Bayou, Coda and Ficus allow disconnected operations and are resilient to issues such as network partitions and outages.
+
+Dynamo works similar
+
+Antiquity
+
+- secure log to preserve data integrity
+- use Byzantine fault tolerance protocols to ensure data consistency
+
+### 3.3 Discussion
+
+Dynamo's target (which is different from systems mentioned above)
+
+- always writeable, no updates are rejected due to failures or concurrent writes.
+- all nodes are assume to be trusted.
+- applications using dynamo does not require hierarchical namespaces or complex relational schema.
+- SLA -> a zero-hop DHT
+
+## 4. System Architecture
+
+in addition to the actual data persistence components, the system needs to have
+
+- load balancing
+- membership
+- failure detection
+- failure recovery
+- replica synchronization
+- overload handling
+- state transfer
+- concurrency
+- job scheduling
+- request marshalling
+- request routing
+- system monitoring and alarming
+- configuration management
+
+and due to the length the paper will focus on
+
+- partitioning
+- replication
+- versioning
+- membership
+- failure handling
+- scaling
+
+summary of technologies used in Dynamo and their advantages
+
+| Problems   |     Technique     |  Advantage |
+|----------|:-------------:|------:|
+| Partitioning |  Consistent Hashing | Incremental Scalability |
+| HA w |   Vector clocks with reconciliation during reads   |   Version size is decoupled from update rates |
+| Handling temporary failures | Sloppy Quorum and hinted handoff | Provides high availability and durability guarantee when some of the replicas are not available |
+|Recovering from permanent failures| <!--  TODO: what is Merklet trees--> Anti-entropy using Merklet trees| Synchronizes divergent replicas in the background |
+|Membership and failure detection| Gossip-based membership protocol and failure detection| Preserves symmetry and avoids having a centralized registry for storing membership and node liveness information|
