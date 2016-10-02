@@ -14,7 +14,7 @@ Strong points
 
 - what we CAN do by combing technologies and having tradeoffs to make a production distributed system.
 - The introduction shows the structure of each section.
-- 99.9 percentile for customer experience, engineers' relentless focus. (btw: Does their relentless focus result in higher salary or longer vacation)
+- 99.9 percentile for customer experience, engineers' relentless focus. (btw: Does their relentless focus result in higher salary and/or longer vacation)
 - 'Give services control over their system properties, let services make their own tradeoffs', like Waldo's paper, engineers need to know what they are doing, don't try to unify everything.
 
 Weak points
@@ -34,7 +34,7 @@ Questions
 - what is ... see the supplemental part, idk all of them
 - sec 2. Each service that uses Dynamo runs its own Dynamo instances.
 - sec 2.3 P2 how to detect replica conflicts, the paper only mentioned about how to resolve?
-- Oceanstore (https://oceanstore.cs.berkeley.edu/) is mentioned, from its website it seems it is a prototype and not used in production?
+- Oceanstore (https://oceanstore.cs.berkeley.edu/) is mentioned, from its website it seems it is a prototype and not used in production, does most academic systems end up like that?
 - **what is the P2P network talked in the paper different from P2P software we use like BitTorrent, Emule**
 - Antiquity and its `Byzantine fault tolerance protocols` is mentioned, how does it do that?
 - 4.2 consistent hashing, it says 'heterogeneity' in 2.3 Design Discussion but does consistent hashing distribute load by server capabilities? (in P210, P2 use a variant of consistent hashing)
