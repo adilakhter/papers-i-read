@@ -219,3 +219,30 @@ summary of technologies used in Dynamo and their advantages
 | Handling temporary failures | Sloppy Quorum and hinted handoff | Provides high availability and durability guarantee when some of the replicas are not available |
 |Recovering from permanent failures| <!--  TODO: what is Merklet trees--> Anti-entropy using Merklet trees| Synchronizes divergent replicas in the background |
 |Membership and failure detection| Gossip-based membership protocol and failure detection| Preserves symmetry and avoids having a centralized registry for storing membership and node liveness information|
+
+### 4.1 System Interface
+
+- get(key) -> single | a list of objects with conflicting versions along with a context
+- put(key, context, object)
+- context -> encodes system metadata about the object
+- MD5 hash on key to determine storage node.
+
+### 4.2 Partitioning Algorithm
+
+- scale incrementally
+
+use consistent hashing to distribute the load across multiple storage hosts
+
+- [x] it says 'heterogeneity' but does consistent hashing distribute load by their capabilities
+
+basic consistent hashing does not fit, use variant, one node has multiple virtual nodes based on their capacity, physical structure.
+
+- [ ] is this the `Token Ring`
+
+advantages
+
+- if a node become unavailable, the load handled by this node is evenly dispersed across the remaining available nodes.
+- the newly available node accepts a roughly equivalent amount of load from each of the other available nodes.
+- the number of virtual nodes can represents its capacity and heterogeneity in physical infrastructure.
+
+### 4.3 Replication

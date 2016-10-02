@@ -32,6 +32,8 @@ Questions
 - Oceanstore (https://oceanstore.cs.berkeley.edu/) is mentioned, from its website it seems it is a prototype and not used in production?
 - **what is the P2P network talked in the paper different from P2P software we use like BitTorrent, Emule**
 - Antiquity and its `Byzantine fault tolerance protocols` is mentioned, how does it do that?
+- 4.2 consistent hashing, it says 'heterogeneity' in 2.3 Design Discussion but does consistent hashing distribute load by server capabilities? (in P210, P2 use a variant of consistent hashing)
+- is the variant of consistent hashing the `Token Ring`?
 
 
 ## Supplemental
