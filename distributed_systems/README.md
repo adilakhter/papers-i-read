@@ -7,3 +7,5 @@ Most of them are from [CMPS232](https://github.com/palvaro/CMPS232-Fall16)'s rea
 - [Implementing Remote Procedure Calls](rpc)
 - [A Note on Distributed Computing](anti-rpc)
 - [Dynamo: Amazon's Highly Available Key-value Store](dynamo)
+- [Chord: A Scalable Peer-to-peer Lookup Service for Internet Applications](chord)
+- [Using Lightweight Modeling To Understand Chord](chord-light)
