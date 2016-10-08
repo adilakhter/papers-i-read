@@ -35,5 +35,8 @@ Questions
 ## Supplemental
 
 - ascribe: attribute something to (a cause) 归因于
+- proposition: a statement or assertion that expresses a judgment or opinion. 提议
+- Propositional logic: https://en.wikipedia.org/wiki/Propositional_calculus
+- equivalence relation, binary operation that is reflexive, symmetric, transitive
 
 ## Ref

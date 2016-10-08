@@ -1,1 +1,3 @@
 # Submit: Using Reasoning about knowledge to analyze distributed systems
+
+philosophers .... the class before our class is about philosophy ....

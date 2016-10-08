@@ -46,6 +46,37 @@ nor Charlie individually has this knowledge.
 
 ## 2. The Possible Worlds Model
 
+Need a language that allow us to express notions of knowledge in a straight way.
+
+- agents 1,....,n
+- primitive propositions
+  - x = 0
+  - process 3 is faulty
+  - modal operations K1, ... Kn, K1\\fi 'agent 1 knows \\fi'
+- Eg everyone in the group G knows
+- Cg it is common knowledge among the agents in G
+- Ig it is implicitly known among the agents in G
+
+(a very fun language .... )
+
+Kripke structure
+
+- structure M for n agents is a tuple (S, n, J^l,..., JQ),
+- can be viewed as a labeled directed graph
+
+Formula
+
+- could be true at one world but false at another
+
+Three particular properties of the definition of knowledge
+
+- agents know only true facts <- belief Although you may have false beliefs, you
+cannot know something that is false.
+- each agent knows all the logical consequences of his knowledge.
+- an agent knows all valid formulas.
+
+Does not take computation into account until Section 7.
+
 ## 3. Ascribing knowledge to processors in a distributed system
 
 ## 4. Common knowledge and the "Coordinated Attack" problem
