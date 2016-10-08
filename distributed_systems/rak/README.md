@@ -1,5 +1,6 @@
 # Using Reasoning About Knowledge to analyze distributed systems
 
+Type: survey
 
 For CMPS232 Fall16
 
@@ -32,5 +33,7 @@ Questions
 - TBD
 
 ## Supplemental
+
+- ascribe: attribute something to (a cause) 归因于
 
 ## Ref
