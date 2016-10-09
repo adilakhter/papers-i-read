@@ -32,7 +32,7 @@ Possible Worlds model (Hintikka 1062)
 - everyone knows the knowledge
 - everyone knows everyone knows the rules
   - reminds of a plot in friends, do they know we know that she knows
-- recursive everyone knows f(n) = everyone knows f(n-1) f(1) = everyone knows fact \\fi
+- recursive everyone knows f(n) = everyone knows f(n-1), f(1) = everyone knows fact \\fi
 
 common knowledge is a prerequisite for simultaneous agreement and coordinated action.  
 
@@ -82,7 +82,7 @@ Does not take computation into account until Section 7.
 
 ## 4. Common knowledge and the "Coordinated Attack" problem
 
-quite fun problem
+quite fun problem 'coordinated attack'
 
 Theorem 4.1
 
@@ -127,5 +127,7 @@ Three failure models
 how to compute common knowledge?
 
 ## 7. Taking computation into account
+
+no good way
 
 ## 8. Related work and future directions
