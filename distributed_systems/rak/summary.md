@@ -79,7 +79,14 @@ Does not take computation into account until Section 7.
 
 ## 3. Ascribing knowledge to processors in a distributed system
 
+
 ## 4. Common knowledge and the "Coordinated Attack" problem
+
+quite fun problem
+
+Theorem 4.1
+
+> This result tells us that in a system in which communication is not guaranteed, common knowledge of initially-undetermined facts is not attainable in any run of any protocol. Now
 
 ## 5. Knowledge in asynchronous systems
 
