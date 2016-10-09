@@ -24,7 +24,7 @@ Weak points
 
 - TBD
 - TBD
-- TBD
+- need more graph when it comes to a lot of notation
 
 Questions
 
@@ -38,5 +38,6 @@ Questions
 - proposition: a statement or assertion that expresses a judgment or opinion. 提议
 - Propositional logic: https://en.wikipedia.org/wiki/Propositional_calculus
 - equivalence relation, binary operation that is reflexive, symmetric, transitive
+- P = NP  it asks whether every problem whose solution can be quickly verified by a computer can also be quickly solved by a computer.
 
 ## Ref

@@ -48,6 +48,7 @@ Questions
 - admissible: acceptable or valid
 - bivalent: 二价
 - univalent: 一价
+- multi-set: {a, a, b} and {a, b} are different multi-set but same set https://en.wikipedia.org/wiki/Multiset
 
 ## Ref
 

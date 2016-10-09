@@ -88,9 +88,43 @@ Theorem 4.1
 
 > This result tells us that in a system in which communication is not guaranteed, common knowledge of initially-undetermined facts is not attainable in any run of any protocol. Now
 
+
+- eventual common knowledge
+- likely common knowledge
+
 ## 5. Knowledge in asynchronous systems
 
+Events
+
+- send
+- receive
+- internal event
+
+P16 1) is just like vector clock, contains history of all processes at all time
+
+> time is meaningless in asynchronous systems
+
+causality is the ?only? meaning, like the causal relationship one
+
+- [ ] P16? e -> e'' and e'' -> e ? what ?
+
+wow, mutual exclusion
+
 ## 6. Simultaneous byzantine agreement
+
+> An important problem in distributed systems is that of reaching agreement
+in the presence of faults. This has been abstracted as the Byzantine agree-ment problem,
+
+e,,, the problem really look likes the FLP impossibility ....
+
+and it comes with the three failure models
+
+Three failure models
+- crash failures: a faulty processor may crash, after which it sends no messages
+- omission failures: a faulty processor may fail to send messages to some processors on any given round (but otherwise follows its protocol)
+- byzantine failures: a faulty processor may exhibit arbitrary behavior. In particular, it may 'lie', by sending messages that it was not supposed to according to the protocol.
+
+how to compute common knowledge?
 
 ## 7. Taking computation into account
 
