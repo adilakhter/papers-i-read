@@ -11,3 +11,4 @@ Most of them are from [CMPS232](https://github.com/palvaro/CMPS232-Fall16)'s rea
 - [Using Lightweight Modeling To Understand Chord](chord-light)
 - [Impossibility of Distributed Consensus with One Faulty Process](flp-impossibility)
 - [Using Reasoning about knowledge to analyze distributed systems](rak)
+- [In Search of an Understandable Consensus Algorithm](raft)
