@@ -131,3 +131,83 @@ Log Entry
 - a state machine command
 - the term number
 - log index (position in the log)
+
+The leader decides when it is safe to apply a log entry to the state machines.
+It includes the highest index it knows to be committed in AppendEntries RPCs (include heartbeats)
+Once a follower learns that a log entry is committed, it applies the entry to its local state machine (in log order).
+
+Raft maintains the following properties
+
+- If two entries in different logs have the same index and term, then they store the same command.
+  - a leader create at most one entry with a given log index in a given term and log entries never change their position in the log.
+  - [ ] so when followers receive the AppendEntries RPC, they place the entry in current term based on the index in the RPC message? (which help avoid disorder of message arrival?)
+- If two entries in different logs have the same index and term, then the logs are identical in all preceding entries.
+  - consistent check by AppendEntries. Includes the index and term of the entry in its log that immediately precedes the new entries
+  - if the follower does not find an entry in its log with the same index and term, then it refuses the new entries
+  - [x] what does the leader do when the follower refuses?
+    - in leader forcing duplicate, decrease the next index until the follower accept
+
+Log inconsistency
+
+- leader crashes
+  - follower have less
+  - follower have extra
+  - both
+- missing and extraneous entries in a log may span multiple terms
+
+Leader forcing followers' log to duplicate its own. -> overwrite conflict
+- [ ] section 5.4 restriction show this is safe
+- leader maintains a **nextIndex** for each follower
+  - [ ] how does the leader know all the followers?
+- leader first come to power, initialize all nextIndex values to the index just after the last one in its log
+- after a rejection, the leader decrements nextIndex
+
+A leader never overwrites or deletes entries in its own log
+
+### 5.4 Safety
+
+Restriction on which server may be elected leader ensures that the leader for any given term contains all of the entries committed in previous terms.
+(Leader Completeness Property)
+
+#### 5.4.1 Election restriction
+
+In any leader-based consensus algorithm, the leader must eventually store all of the committed log entries;
+Raft uses the voting process to prevent a candidate from wining an election unless its log contains all committed entries.
+RequestVote RPC includes information about the candidate's log, and the voter denies its vote if its own log is more up-to-date than that of the candidate
+
+compare both index and term
+
+#### 5.4.2 Committing entries from previous terms
+
+If a leader crashes before committing an entry, future leaders will attempt to finish replicating the entry.
+However, a leader cannot immediately conclude that and entry from a previous term is committed once it is stored on a majority of servers.
+
+- [ ] To eliminate that problem, Raft never commits log entries from previous terms by counting replicas.
+- [ ] what is counting replicas??
+
+#### 5.4.3 Safety argument
+
+- [ ] Assume that the Leader Completeness does not hold, then prove a contradiction
+? what ... how can this prove ? isn't it just prove a example of hold, it does not means it holds for all?...
+
+- [ ] skipped the proof ...
+
+Raft requires servers to apply entries in log index order
+
+### 5.5 Followers and candidate crashes
+
+Raft RPCs are idempotent
+
+### 5.6 Timing and availability
+
+- Safety must not depend on timing
+- Availability must inevitably depend on timing
+
+Leader election is the aspect of Raft where timing is most critical
+
+broadcastTime << electionTimeout << MTBF (mean time between failure)
+
+broadcastTime depends on persistent information to stable storage, range from 0.5ms to 20ms
+electionTimeout is defined, range from 10ms to 500ms
+
+MTBFs several months or more
