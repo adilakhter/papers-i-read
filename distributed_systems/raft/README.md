@@ -40,8 +40,8 @@ Miscellaneous
 
 ## Supplemental
 
-- TBD
-- TBD
+- Volatile: 易变的，易挥发的
+- consecutive: following continuously
 - TBD
 
 ## Ref
