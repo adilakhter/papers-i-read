@@ -211,3 +211,17 @@ broadcastTime depends on persistent information to stable storage, range from 0.
 electionTimeout is defined, range from 10ms to 500ms
 
 MTBFs several months or more
+
+## 6. Cluster membership changes
+
+- replace failed servers
+- change the degree of replication
+
+Use a two-phase approach to ensure safety
+
+- first switch to a transitional configuration called joint consensus
+- once the join consensus has been committed, the system then transitions to the new configuration
+
+store the configuration for joint consensus as a log entry and replicate that entry using the mechanism described previously
+
+TODO: rest of section 6
