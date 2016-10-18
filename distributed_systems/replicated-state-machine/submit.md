@@ -7,5 +7,5 @@ serves as an index. This paper is an combination, its an index to those papers w
 papers like the 'Concepts and Notations for Concurrent Programming' one. (I think is more related
 to programming languages)
 
-btw: Prof. @pavlaro Are we going to talk about programing languages that is used in building distributed systems. A lot of languages says with their design, programmers can write robust large scale systems like playing with lego, like scala with Akka, Erlang etc. Do they really
+btw: Prof. @pavlaro Are we going to talk about programming languages that is used in building distributed systems. A lot of languages says with their design, programmers can write robust large scale systems like playing with lego, like scala with Akka, Erlang etc. Do they really
 improve something or they just start a new standard.

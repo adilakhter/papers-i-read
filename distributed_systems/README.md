@@ -14,4 +14,4 @@ Most of them are from [CMPS232](https://github.com/palvaro/CMPS232-Fall16)'s rea
 - TODO: missing Paxos
 - [In Search of an Understandable Consensus Algorithm](raft)
 - [Implementing Fault-Tolerant Services Using the State Machine Approach: A Tutorial](replicated-state-machine)
-- TODO: LDFI
+- [Lineage-driven Fault Injection](ldfi)
