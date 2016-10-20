@@ -15,3 +15,4 @@ Most of them are from [CMPS232](https://github.com/palvaro/CMPS232-Fall16)'s rea
 - [In Search of an Understandable Consensus Algorithm](raft)
 - [Implementing Fault-Tolerant Services Using the State Machine Approach: A Tutorial](replicated-state-machine)
 - [Lineage-driven Fault Injection](ldfi)
+- [Managing Update Conflicts in Bayou, a Weakly Connected Replicated Storage System](bayou)
