@@ -23,14 +23,15 @@ the conflict.
 Weak points
 
 - Bayou does not fits for real time applications. While for now, we use mobile device a lot for things like instant messages. (So how do they guarantee the (a least one) delivery?)
+- Does Bayou have some direct applications after they published the paper? I feel it's still very
+academic after so many description on its application, using Bayou is overkill for the applications they described.
 
 Questions
 
 - What was mobile devices like when author wrote the paper?
 - Does online collaborative editing applications use something like Bayou? ie: http://etherpad.org/, google doc etc.
 - Program development is mentioned as a application for Bayou. Is Git somehow similar to Bayou?
-- Does Bayou have some direct applications after they published the paper? I feel it's still very
-academic after so many description on its application, using Bayou is overkill for the applications they described.
+
 
 Miscellaneous
 
