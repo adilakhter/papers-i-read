@@ -22,5 +22,4 @@ I have never read a formal proof, but here would be a good place to look:
 
 [P. Mahajan, L. Alvisi, and M. Dahlin. Consistency, availability, and
 convergence. Technical Report TR-11-22, Univ. Texas at Austin, Dept.
-Comp. Sci., 2011.](Consistency, availability, and
-convergence)
+Comp. Sci., 2011.](http://www.cs.utexas.edu/users/dahlin/papers/cac-tr.pdf)

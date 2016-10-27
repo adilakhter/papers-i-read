@@ -16,4 +16,5 @@ Most of them are from [CMPS232](https://github.com/palvaro/CMPS232-Fall16)'s rea
 - [Implementing Fault-Tolerant Services Using the State Machine Approach: A Tutorial](replicated-state-machine)
 - [Lineage-driven Fault Injection](ldfi)
 - [Managing Update Conflicts in Bayou, a Weakly Connected Replicated Storage System](bayou)
-- [Stronger Semantics for Low-Latency Geo-Replicated Storage](http://sns.cs.princeton.edu/docs/eiger-nsdi13.pdf)
+- [Stronger Semantics for Low-Latency Geo-Replicated Storage](geo-replicated)
+- [Building Consistent Transactions with Inconsistent Replication]()
