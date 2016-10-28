@@ -17,4 +17,5 @@ Most of them are from [CMPS232](https://github.com/palvaro/CMPS232-Fall16)'s rea
 - [Lineage-driven Fault Injection](ldfi)
 - [Managing Update Conflicts in Bayou, a Weakly Connected Replicated Storage System](bayou)
 - [Stronger Semantics for Low-Latency Geo-Replicated Storage](geo-replicated)
-- [Building Consistent Transactions with Inconsistent Replication]()
+- [Building Consistent Transactions with Inconsistent Replication](tapir)
+- [Ceph: A scalable, High-Performance Distributed File System](ceph)
