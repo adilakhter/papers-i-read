@@ -19,3 +19,4 @@ Most of them are from [CMPS232](https://github.com/palvaro/CMPS232-Fall16)'s rea
 - [Stronger Semantics for Low-Latency Geo-Replicated Storage](geo-replicated)
 - [Building Consistent Transactions with Inconsistent Replication](tapir)
 - [Ceph: A scalable, High-Performance Distributed File System](ceph)
+- [Practical Byzantine Fault Tolerance](bft)
