@@ -12,6 +12,9 @@ they built their own tsdb. It seems it is not open sourced. https://github.com/c
 - no need for expensive consensus (no Paxos, no Raft)
 - write once
 - HA (they have 6 replica in each DC, and have 2 remote DC) (The guy from prometheus is wrong about no need for HA, actually I think the host created some misunderstanding when he reply the message from prometheus guy)
+- **They have a [broker](https://github.com/circonus-labs/fq)** sit in front of tsdb to handle storm, and data are turned into histogram and stored in tsdb if it is too dense.
+exact values are stored only when they are loose. Their tsdb support both numeric value and histogram.
+- they have open sourced the message queue [fq](https://github.com/circonus-labs/fq)
 
 ## Push or Pull
 
