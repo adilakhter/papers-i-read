@@ -20,3 +20,5 @@ Most of them are from [CMPS232](https://github.com/palvaro/CMPS232-Fall16)'s rea
 - [Building Consistent Transactions with Inconsistent Replication](tapir)
 - [Ceph: A scalable, High-Performance Distributed File System](ceph)
 - [Practical Byzantine Fault Tolerance](bft)
+- [Towards a cloud computing research agenda](towards_cloud)
+- [Sinfonia](sinfonia)
