@@ -22,3 +22,6 @@ Most of them are from [CMPS232](https://github.com/palvaro/CMPS232-Fall16)'s rea
 - [Practical Byzantine Fault Tolerance](bft)
 - [Towards a cloud computing research agenda](towards_cloud)
 - [Sinfonia](sinfonia)
+- [MapReduce: Simplied Data Processing on Large Clusters](map_reduce)
+- TODO: missing CRDTs
+- [Logic and Lattices for Distributed Programming](lldp)
