@@ -25,3 +25,4 @@ Most of them are from [CMPS232](https://github.com/palvaro/CMPS232-Fall16)'s rea
 - [MapReduce: Simplied Data Processing on Large Clusters](map_reduce)
 - TODO: missing CRDTs
 - [Logic and Lattices for Distributed Programming](lldp)
+- [The Good, the Bad, and the Differences: Better Network Diagnostics with Differential Differential Provenance](diff_provenance)

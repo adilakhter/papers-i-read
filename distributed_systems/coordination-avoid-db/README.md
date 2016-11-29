@@ -18,7 +18,7 @@ Strong points
 - OLTP Benchmark suite. (The most useful reference for me in this paper)
 - apply to SQL. If the change can be transparent for existing tools, developers would be happy to adopt it
 - 'coordination can only be avoided if all local commit decisions are globally valid'
-- One of the ref `Principles of Distributed Databases Systems` seems to provide a lot of refer
+- One of the ref `Principles of Distributed Databases Systems` seems to provide a lot of background knowledge for many papers we have read in the class
 
 Weak points
 
