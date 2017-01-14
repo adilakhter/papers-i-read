@@ -10,6 +10,7 @@
 General topics reading are mainly from CMPS 278's course requirement
 
 - [Encapsulation of Parallelism in the Volcano Query Processing System](parallel_volcano.md)
+- [Access path selection in a relational database management system](access_path_RDBMS.md)
 
 ## TODO:
 
