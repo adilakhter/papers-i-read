@@ -14,17 +14,80 @@
 
 \medskip
 
+Crash recovery, the durability in ACID. Committed transaction must be written to disk, on going transactions
+aborted due to system crash must be rolled back.
+
+\bigskip
+
 2. How does the authors’ approach or solution improve on previous approaches to that problem
 
 \medskip
+
+ARIES's algorithm is relatively simple compared with other WAL, like it redo all the transaction and then undo
+those "loser", while other systems redo "non-loser". Also compared with shaow page method, log is more light weight
+thus improve database throughput and reduce disk usage.
+
+\bigskip
 
 3. Why is this work important
 
 \medskip
 
+Because it's useful for both durability and concurrency control (consistency).
+Database is an abstraction of data, all the clients have the illusion that they
+have exclusive access to the data, just like all the process have the illusion that
+they have exclusive access to CPU (by time slicing) and Memory (by virtual memory).
+And this can also be applied to filesystem, maybe OS as well? Seems most system
+softwares have log/journal for recovery.
+
+\bigskip
+
 4. Your comments/questions
 
 \medskip
 
+Questions
+
+\begin{itemize}
+  \item In order to guarantee the durability of the log, it is written to several disks,
+what if the crash result in different disk have different copies.
+  \item What happens to indexes when recovery?
+  \item Is it possible to dumping the whole database snapshot, like I have
+2GB data in RAM and I dump a 2GB file in the disk, so when I recovery, I just load the whole
+dump, and use some copy on write tricks to allow transactions when I am dumping. It should
+be faster than appling log, cause I have the final state in the dump, while log is actually
+replaying everything that has happended, and sometimes it's a wast.
+i.e. transaction A inserted 100 entries and transaction B deleted those 100 entries,
+the final state has nothing to do with those 100 entries,
+but when using WAL, I have to do these in fact useless work.
+Maybe I can analysis the log and omit those useless work?
+  \item If the data is immutable, i.e. what is inserted will never be updated, like for time series,
+sensor data of temperature can't have another value once it is recorded. The database itself would
+be like a log, except it need to have better read spead than sequencial files. WAL might be useless.
+  \item Buffer manager is mentioned in the paper, which acts pretty like virtual memory,
+and we know \textit{mmap} can map file into memory, I've watched a course from Andrew Pavlo
+and he says no serious database use \textit{mmap}. I am wondering since current memory is so
+big compared to the old time, maybe it's ok to let system handle all the page in page out, since
+it would be pretty rare to page out when you have 64GB of RAM and 2GB of data.
+  \item The Log should be pretty large, and ARIES did mentioned archive, is it possible to
+compress the logs when archive, like use some specific algorithm that knows the structure of
+the log instead of general ones like GZIP, LZMA.
+  \item ARIES also mentioned tape when it comes to archive and I heard Google is also using tape for long term backup,
+I was wondering what tape really is, cause my idea of tape is the music tape that I put in my walkman back in primary school.
+Is the tape technology back at ARIES time same as the tape Google and Amazon using nowadays.
+  \item Where are all those guys writing database in IBM now? It seems only government and
+tranditional companies are still using things from IBM (at least this is the case in China).
+\end{itemize}
+
+Miscellaneous
+
+\begin{itemize}
+  \item ARIES is actually the name of the algorithm, I was thinking it's the name of the database
+like System R
+  \item IBM had so many on going database project at that time, that's pretty different from my
+impression of IBM China, where most people are just waiting for retirement
+  \item In the Database Managment Systems book, the crash recovery chapter use ARIES as example,
+and there is a footnote I like most, "Nothing is guaranteed in life except death and taxes"
+\end{itemize}
 
 \end{document}
