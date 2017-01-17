@@ -1,0 +1,5 @@
+install:
+  - xelatex ARIES
+scripts:
+  clean:
+    - rm -f *.log *.aux
