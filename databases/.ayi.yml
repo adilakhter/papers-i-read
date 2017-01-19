@@ -1,5 +1,6 @@
 install:
-  - xelatex ARIES
+  # - xelatex ARIES
+  - xelatex write-behind-logging
 scripts:
   clean:
     - rm -f *.log *.aux

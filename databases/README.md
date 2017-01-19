@@ -9,8 +9,15 @@
 
 General topics reading are mainly from CMPS 278's course requirement
 
+### Optimization 
+
 - [Encapsulation of Parallelism in the Volcano Query Processing System](parallel_volcano.md)
 - [Access path selection in a relational database management system](access_path_RDBMS.md)
+
+### Crash Recovery
+
+- [ARIES （Write-Ahead Logging)](ARIES.tex)
+- [Write-Behind Logging](write-behind-logging.tex)
 
 ## TODO:
 
