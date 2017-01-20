@@ -1,6 +1,7 @@
 \documentclass[12pt,a4paper,oneside]{article}
 \usepackage[a4paper]{geometry}
 \setlength\parindent{0pt}
+\usepackage{hyperref}
 
 \begin{document}
 
@@ -14,7 +15,8 @@
 
 \medskip
 
-TBD
+Using NVM with DRAM (not NMV alone) to improve the performance of database in
+durability and recovery.
 
 \bigskip
 
@@ -22,7 +24,11 @@ TBD
 
 \medskip
 
-TBD
+\begin{itemize}
+  \item Use Write-Behind Logging to make use of the fast speed of NVM and random access (compared to block access with SSD)
+  \item Remove the redo and undo phase in ARIES
+  \item Support both two tier (DRAM, NVM) and three tier (DRAM, NVM, SSD/HDD), while previous apporaches are single tier (NVM only)
+\end{itemize}
 
 \bigskip
 
@@ -30,7 +36,9 @@ TBD
 
 \medskip
 
-TBD
+It utilize NVM to avoid the overhead of writing values in log, which can allow SSD to run longer
+and support more data in database with same disk space.
+NVM is still very immature (they used an emulator \url{http://pmem.io/}), but it might be the future of storage.
 
 \bigskip
 
@@ -41,13 +49,27 @@ TBD
 Questions
 
 \begin{itemize}
-  \item TBD
+  \item There are TPC-C, TPC-H, TPC-*, why they only choose TPC-C, and as I know,
+Peloton is designed to be a hybrid OLTP \& OLAP database (Pavlo mentioned ), while YCSB is used to benchmark
+systems that does not fit into TPC-* well, like DyanmoDB (large k-v), HBase. As
+an hybrid database, YCSB does not fit into both OLTP \& OLAP.
+  \item The detail for replication is not provided (or I missed it), they said extra
+construct is needed because WBL does not have value like WAL. And since it involve on fly
+compute, is it possible the CPU usage would become a bottle neck?
+  \item Only primary secondary replication is considered, and what about chain replication
+and other more advacned replications, for more than one host, it may involve some consistent
+algorithm like Paxos and Raft.
+  \item The size of the main memory is not well discussed, what if the main meory is same or
+even larger than NVM, like it's normal to see 64GB memory in normal user's home, not to mention
+server-class machines.
 \end{itemize}
 
 Miscellaneous
 
 \begin{itemize}
-  \item TBD
+  \item Pavlo published a paper about a benchmark framework called OLTP-Bench \url{https://github.com/oltpbenchmark/oltpbench}
+But he didn't mention it in this paper
+  \item This paper discussed MVCC with WAL, which is what previous course mentioned but didn't have time to cover
 \end{itemize}
 
 \end{document}
