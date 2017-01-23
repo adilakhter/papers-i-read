@@ -1,0 +1,66 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: Map Reduce
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Build search index for Google Search Engine, i.e. inverted index. And other large
+scale data processing using commodity hardware
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+MR abstracts the complex logic for distributed systems to end developer, they can
+write simple logic and run it on thousands of machines concurrently and fault tolerantly.
+Also optimization like combiner is taken to reduce network traffic.
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+It introduced a distributed file system, which lead to the widely used open source
+implementation HDFS. It provides a simple approach for using a pipeline style to
+decouple and re-assembly realtively complex tasks.
+It gives direction so people created Hadoop and a whole eco-system around it.
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item Using a small amount of high end machine instead of a fleet of commodity machines
+maybe faster and use less electricity. The data transportation between machines are pretty
+high, and a small amount of high end machines are less likely to fail
+  \item A lot of logic can not be written into the map reduce style efficiently,
+and using map reduce leave little space for optimization
+  \item Map Reduce is slow due to write intermediate result into distributed file system
+  \item Hadoop is written in Java and Google's MR is written in CPP, how much performance impact
+does using different languages bring
+\end{itemize}
+
+Miscellaneous
+
+\begin{itemize}
+  \item The concept of Map Reduce is not novel, but the distributed file system and resource management are good engineering solutions
+\end{itemize}
+
+\end{document}

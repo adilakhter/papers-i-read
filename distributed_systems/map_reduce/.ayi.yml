@@ -1,0 +1,5 @@
+install:
+  - xelatex mr
+scripts:
+  clean:
+    - rm -f *.log *.aux
