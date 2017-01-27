@@ -1,6 +1,7 @@
 install:
   # - xelatex ARIES
-  - xelatex write-behind-logging
+  # - xelatex write-behind-logging
+  - xelatex lsm-tree
 scripts:
   clean:
-    - rm -f *.log *.aux
+    -sh -c "rm -f *.log *.aux"

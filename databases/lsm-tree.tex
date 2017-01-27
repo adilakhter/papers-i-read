@@ -1,0 +1,56 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: The log structured merge tree
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Heavy write load and acceptable read spead
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+\begin{itemize}
+  \item Increase write proformance by write to memory
+  \item Increase disk write speed by append only and batching
+\end{itemize}
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+Because write heavy is become more common when we have more user, more devices, more data
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item Do we still need WAL when we use log structured merge tree
+  \item Is tree the core concept for LSM tree? No, I think merge is
+  \item A lot of databases using LSM Tree are column family databases, are they similar to column store?
+  \item What is the proper level depth and size of each level
+  \item How to speed up read when you need to read and merge result from multiple levels
+  \item How to use Bloomfilter for range queries? Use prefix can solve some (but not all)
+\end{itemize}
+
+\end{document}
