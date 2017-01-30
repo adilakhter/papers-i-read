@@ -1,0 +1,66 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: RDD
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Speed up large scale data analysis and allow expressing complex model using combination
+of simple operations. Lower bandwith and keep data in memory.
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+\begin{itemize}
+  \item Found the core problem instead just focus on the obvious problem. 'The common problem was a lack of data sharing abstractions'. And
+  they introduced RDD
+  \item The operations on RDD is more coarse grained
+  \item Use Lineage for recovery, recompute the lost partition from parent RDD, or use chekpoint if the conpute chain is too long
+\end{itemize}
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+Because Spark is much faster than Hadoop, meaning using less time and lower network traffic for same amount of data.
+And RDD provide an high level abstraction that can be fit into many types of computing. Also Scala is not that verbose
+as Java.
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item They said they use original scala, but there are optimization to the shell, so I think they built a new shell based on Scala's REPL,
+  and you can't import spark in normal Scala shell and run queries intereactively.
+  \item Spark said they don't use swap when compare itself to other distributed memory systems, and later they said they use LRU when RAM is
+  not enough, I think they should make it more explicit when they show their advantages with previous systems
+  \item They mentioned they will try SQL as a new interface for running query, and the have Spark QL (which is next reading).
+  But I thinking using general purpose programming language to express query is more concise though a little bit verbose. It seems everything about data endup providing SQL support.
+  \item Is it possible to do some optimization if it has some knowledge of the underlying dataset, the paper only mentioned lazy evaluation and
+  partition based on locality. Also in some environment using Docker, like Kubernetes, does the partition logic still work? Since most processes may not be long running.
+  \item It would cost a lot to run their benchmark using AWS, pretty envy about that.
+  \item Some lower level things like the fault tolerance of driver and worker as not mentioned, they just said they use
+  Mesos, though Mesos is also from AMP lab.
+\end{itemize}
+
+\end{document}

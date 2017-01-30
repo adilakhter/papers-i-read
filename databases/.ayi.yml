@@ -4,4 +4,4 @@ install:
   - xelatex lsm-tree
 scripts:
   clean:
-    -sh -c "rm -f *.log *.aux"
+    - sh -c "rm -f *.log *.aux"

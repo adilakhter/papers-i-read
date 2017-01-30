@@ -24,3 +24,9 @@ _testmain.go
 *.prof
 
 *.swp
+
+
+*.aux
+*.log
+*.out
+*.pdf

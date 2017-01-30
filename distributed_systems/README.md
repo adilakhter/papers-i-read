@@ -26,3 +26,7 @@ Most of them are from [CMPS232](https://github.com/palvaro/CMPS232-Fall16)'s rea
 - TODO: missing CRDTs
 - [Logic and Lattices for Distributed Programming](lldp)
 - [The Good, the Bad, and the Differences: Better Network Diagnostics with Differential Differential Provenance](diff_provenance)
+
+From CMPS278
+
+- [Resilient distributed datasets: A fault-tolerant abstraction for in-memory cluster computing](spark)

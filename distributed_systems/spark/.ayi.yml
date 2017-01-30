@@ -1,0 +1,5 @@
+install:
+  - xelatex rdd
+scripts:
+  clean:
+    - sh -c "rm -f *.log *.aux"
