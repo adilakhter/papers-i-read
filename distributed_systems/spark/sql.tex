@@ -1,0 +1,61 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: Spark SQL
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Make Spark's query interface more expressive and reduce the learning curve to many (database) users.
+Query from heterogeneous sources
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+\begin{itemize}
+   \item Not limited by legacy problem of Hive like Shark, which is hard to be used on relational data source
+   \item Use the features of Scala to make the query interface more programmable than simple query language
+   \item Introduce an extensible optimizer which requires few code to add new rules
+\end{itemize}
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+Spark is used in a lot of areas, from BI to machine learning and include multiple datasource from JSON file to
+RDBMS, NoSQL store. Spark SQL provides a unified programmable query interface to make Spark more easy to use.
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item A lot of features in the optimizer are implemented using Scala's own features like pattern matching, byte code generation.
+  Is it possible to use a non functional language like C++ to do the same, and how much is the extra effort and performance gain
+  \item Spark SQL is more like LINQ than SQL, from the example, you can actually building an AST when you create a query, so the
+  SQL layer actually don't need parser, but the plain text representation layer also has its advantage, like it is easier to write
+  SQL in normal web admin application.
+  \item The cost model is not in very detail, what data is needed from datasource in order to have Spark SQL make better plan, and
+  if there is several levels of optimization based on the knowledge of the datasource
+  \item The dataframe idea is borrowed from R but use lazy evaluation
+\end{itemize}
+
+\end{document}
