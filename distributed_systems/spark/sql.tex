@@ -55,7 +55,16 @@ Questions
   SQL in normal web admin application.
   \item The cost model is not in very detail, what data is needed from datasource in order to have Spark SQL make better plan, and
   if there is several levels of optimization based on the knowledge of the datasource
+  \item The idea of storing cache in a column way (apply compression using dictionay, run length etc.) is pretty smart, but that 
+  exchange storage space with CPU time, is there a point at which storage is cheaper than CPU time or CPU time is always cheapter
+than storage no matter what 
+\end{itemize}
+
+Stuff
+
+\begin{itemize}
   \item The dataframe idea is borrowed from R but use lazy evaluation
+  \item The object mapping is different from traditional ORM, but it may only be the better one when it comes to large amount of database	  
 \end{itemize}
 
 \end{document}

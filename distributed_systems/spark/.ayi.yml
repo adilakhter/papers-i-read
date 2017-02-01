@@ -3,4 +3,4 @@ install:
   - xelatex sql
 scripts:
   clean:
-    - sh -c "rm -f *.log *.aux"
+    - sh -c "rm -f *.log *.aux *.out"
