@@ -1,0 +1,69 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: Bigtable
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Google has (real) big data and various workload.
+A lot them does not require the ACID features of traditional RDBMS.
+They need a system to support large volumne of data and is reliable
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+They use a LSM tree structure to improve write performance, and use GFS for reliable storage.
+The column faimly model built on top of key value leads to more possible optimization (i.e. locality)
+and more high level interface for developers (than just K-V)
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+\begin{itemize}
+  \item the paper let more people know LSM tree
+  \item It shows how you can build a structural data store on top of distributed file system
+  \item It works for Google
+\end{itemize}
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item Maybe using a non distributed file system, and let the database take control how the SSTable files
+are replicated could gain better performance, i.e. the logic for file replication could be more application
+specific and enable more optimization
+  \item Would the need for master and Chubby become the bottle neck of the system?
+  \item Having multiple tablet is like the partition by primary key in some RDBMS like MySQL, so the
+  \item The idea of master kill itself if it can't reach Chubby is pretty interesting, never thought
+  about having master terminate itself when it found itself is partitioned from rest of the network
+  (or just the coordiante service)
+\end{itemize}
+
+Miscellaneous
+
+\begin{itemize}
+  \item Bigtable provide security features like ACL on column faimly level
+  \item support 'get by key range' operation, which is pretty useful when it comes to things like timestamp
+\end{itemize}
+
+\end{document}
