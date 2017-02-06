@@ -1,0 +1,73 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: Eliminating unscalable communication in transaction processing
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Concurrent access to a shared resource is the bottleneck of many databases, especially
+shared everything type. And some downgrade is unacceptable for certain use cases like bank.
+The author wants to increase performance while keep the same level of functionality
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+\begin{itemize}
+  \item It focus on communication pattern and break it into three types, and downgrade the most
+  cost one (unbounded) to others
+  \item It doesn't not sacrifices ACID
+  \item Previous approaches just focus on the most obvious critical path regardless of their type,
+  while in the long term eliminating unbounded communication is the key
+\end{itemize}
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+Because it can let databases make use of modern multicore hardware and adapt to modern workload.
+And spend more on real logical instead of waiting for (communicate with) each other
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item This paper feels like a summary (survey) of a bunch of related work the author have done.
+  \item The idea of this paper is pretty similar to CPU piplining, break big transaction into small ones for parallel,
+  pipelining etc.
+  \item It mentiond logical partition and physical partition, but I think a lot of application and databases now
+  focusing on partition on bussiness level, when you design the schema, you make sure they are splited into several nodes
+  instead of all write to one node.
+  \item The idea of letting requests communicate with each other to eliminate themselves or pass lock among themselves without
+  hitting the central resource manager is great, but what if some requests are malformed (i.e. in a large deployment,
+  some nodes are running an older version of software and the protocol has changed in newer version but they can still communicate
+  except they misunderstand each other), and without a central resource manager sometimes it is hard to log and track when and why bad things happend.
+\end{itemize}
+
+Stuff
+
+\begin{itemize}
+  \item  A lot of Open Source databases are mentioned in Section 2 are mentioned that don't scale, and the author then said
+  some of them have improved themselves based on the author's papers
+\end{itemize}
+
+\end{document}
