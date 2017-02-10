@@ -1,0 +1,59 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: Google F1
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Having a global distributed database that support consistency and a full featured SQL layer
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+\begin{itemize}
+  \item Achieved scalability, availability, consistency, usability all together, which is said impossible by previous publications.
+  \item Use protobuf directly in database, avoid the error prone translation layer between DB, ORM, application code.
+  \item Make tracking change a feature in database, enabling pub/sub style
+  \item Allow MR to use Spanner data directly without going through F1
+\end{itemize}
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+Because it 'achieved scalability, availability, consistency, usability all together', and it works for Google
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item The pub/sub feature in database in pretty cool, and Redis and MongoDB also supporting pub/sub, but they are more 
+  likely used as a broker (message queue). Maybe in some sense, Message Queue (like Kafka) and Database are pretty similar
+  \item It is also possible to allow client to register listener for certain events, like notify me when \textit{select count(*) from error\_msg where date = today()} is larger than 1000. Without this feature, client need to query database 
+  regularly to see if the criteria is matched. 
+  % Change the pull style to push style. Though it seems there are always people arguing that push style can never scale.
+  \item Instead of letting MR use Spanner Data, it is possible to combine F1 with MR, so F1 node can act as a worker node in MR, this may require more advanced scheduling though. Like for some cold node, they can do more compute since they don't have much query, for the hot node, they just don't do the MR stuff because they are too busy being an Database.
+  \item For comapnies that are not Google scale, there must be some cheaper and feasible approaches with more compromises, which is I am actually more interested in, since a lot of successful database products are actually serving the small and medium size companies, MongoDB is not great (for a lot of its design decisions, i.e. mmap, schemaless), but it is popular.
+\end{itemize}
+
+\end{document}

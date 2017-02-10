@@ -3,7 +3,8 @@ install:
   # - xelatex write-behind-logging
   # - xelatex lsm-tree
   # - xelatex bigtable
-  - xelatex eliminate-unscalable-communication
+  # - xelatex eliminate-unscalable-communication
+  - xelatex f1
 scripts:
   clean:
     - sh -c "rm -f *.log *.aux *.out"
