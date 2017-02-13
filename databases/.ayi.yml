@@ -4,7 +4,8 @@ install:
   # - xelatex lsm-tree
   # - xelatex bigtable
   # - xelatex eliminate-unscalable-communication
-  - xelatex f1
+  # - xelatex f1
+  - xelatex dremel
 scripts:
   clean:
     - sh -c "rm -f *.log *.aux *.out"

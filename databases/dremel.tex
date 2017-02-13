@@ -1,0 +1,59 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: Dremel: Interactive Analysis of Web-Scale Datasets
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Storing nested data model in columnar store for fast OLAP query
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+\begin{itemize}
+  \item columnar format for nested data model (previously, they only apply to flat)
+  \item faster than MR, easy to play with data instead of launch a MR and regret
+  \item in situ, access data in place (locality?)
+  \item execute directly, not a DSL wrapper for MR jobs like Pig
+\end{itemize}
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+Because columnar store are well known for OLAP, but previously people have only used in on flat row model (in traditional RDBMS),
+they managed to apply it to nested data model (document model?) and developed the algorithm to stripe and reconsturct the record
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item How does Dremel work with other row based systems like Bigtable (column family is not columnar store I think), F1 in google.
+  Do we need to store an extra copy of data in columnar form for fast OLAP query
+  \item Spark SQL also mentioned (in memory) columnar store I recall (but not clearly), it seems to be difference from Dremel's
+  \item Compression, which is used a lot columnar store is not mentioned (or I missed it), like run length
+  \item 'Dremel’s codebase is dense; it comprises less than 100K lines of C++, Java, and Python code.' so 100K is not a big number for software at this size I guess?
+  \item There is an opensource implementation: Apache Parquet \url{https://parquet.apache.org/}
+\end{itemize}
+
+\end{document}
