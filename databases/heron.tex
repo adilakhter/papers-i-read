@@ -1,0 +1,59 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: Twitter Heron
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Strom is hard to debug and low efficient and Twitter don't want to rewrite existing application using storm
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+\begin{itemize}
+  \item better scheduling using external tools like Aurora
+  \item add backpressure instead of fail fast
+\end{itemize}
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+It reduce cost of hardware and keep the old applications running
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item Chinese E-COM company Alibaba (Taobao) also have their own storm implementation called JStorm \url{https://github.com/alibaba/jstorm}
+  \item Update: I found one of the author from Heron wrote a write up explaining differences (in Chinese though) \url{https://gist.github.com/maosongfu/c3aeb1bb5eb7b39fcdc5}
+  \item Have twitter ever considering switching to other language to avoid GC, like somehow add an abstraction of existing application and
+  compile the abstraction layer to C, and the application logic are compiled as code code template. I remember this is how ARIES managed their
+  query logic, compile query into machine code and execute directly.
+  \item For the GC problem, there is a Zero-GC JVM called Zing \url{https://www.azul.com/products/zing/} which claims to be used by trading companies,
+  GC in trading means directly money lose, though I don't know how they sell this kind of JVM, one of its author is pretty active on China's Quora (Zhihu)
+  \item I think due to growing and the large base of China's market, there will be more paper from China's tech companies in future top conferences.
+  Though some of them treat open source and publication as part of the promotion and salary, I don't know what's the case in western companies.
+\end{itemize}
+
+\end{document}

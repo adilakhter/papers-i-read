@@ -5,7 +5,8 @@ install:
   # - xelatex bigtable
   # - xelatex eliminate-unscalable-communication
   # - xelatex f1
-  - xelatex dremel
+  # - xelatex dremel
+  - xelatex heron
 scripts:
   clean:
     - sh -c "rm -f *.log *.aux *.out"
