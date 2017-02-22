@@ -6,7 +6,8 @@ install:
   # - xelatex eliminate-unscalable-communication
   # - xelatex f1
   # - xelatex dremel
-  - xelatex heron
+  # - xelatex heron
+  - xelatex data-ingestion-connected-world
 scripts:
   clean:
     - sh -c "rm -f *.log *.aux *.out"

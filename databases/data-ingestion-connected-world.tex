@@ -1,0 +1,57 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: Data Ingestion for the Connected World
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+skip
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+skip
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+\begin{itemize}
+  \item It combines a lot of features together, ACID, High load, order, distributed.
+  Which makes the near real time analysis realtively easy.
+  \item Compared with other TSDBs, it add the stream processing
+\end{itemize}
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item For time series data, he mentioned the order and accuracy is important.
+  But I disagree with that, first a lot of time series data can tolerate data lost, if
+  I lost 100 points in 1000000 points, it's likely my analysis will be almost the same.
+  Also there is really no need to keep order of time series data, like he said near real time
+  analysis is important, and keep order can only slow things down.
+  \item The idea of using memstore and diskstore is similar to LSM Tree, most modern
+  systems have adopted this kind of architecture
+\end{itemize}
+
+\end{document}
