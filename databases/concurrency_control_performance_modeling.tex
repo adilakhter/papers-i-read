@@ -1,0 +1,63 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: Concurrency Control Performance Modeling: Alternatives and Implications
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Survey on existing concurrency control model, and explain previous benchmarks
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+\begin{itemize}
+  \item clarify the assumption, which is why previous benchmarks has seems contradictory result
+  \item benchmarks under different assumptions
+\end{itemize}
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+\begin{itemize}
+  \item It points out, although previous benchmarks seems contradictory, it is a result of different assumption.
+  While they are all correct under their own assumption, they could be wrong when placed under other benchmarks assumption.
+  \item When there is limited resource, reserve (blocking) until have to restart is better than restart transaction right away.
+\end{itemize}
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item The assumption part is really important, some time series databases benchmarks I saw simplying gave out throughput and response time
+without mentioning what their worload is, how many hardware resources, even changing a parameter in linux config can result in great
+performance different, and sometimes people just focus on the final result instead of asking how the numbers are obtained.
+  \item Throughput is their main metrics, however in today's world, a lot interactive query, response time is also a major
+metric, in both OLAP and/or OLTP systems
+  \item At the end of paper, they quote and say we would always to have to deal with finite resources even though the price of resources are decreasing.
+I don't think this is the case when we go beyond the scope of earth (in sci-fi movies), data transmisson in space means extremely high delay (speed of light),
+and in that case, compute resource in actually infinite.
+I think physical limit will become the real limit for a lot of computer science problems at last.
+\end{itemize}
+
+\end{document}
