@@ -1,0 +1,61 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: CryptDB: protecting confidentiality with encrypted query processing
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Store encrypted data in DBMS, so people with full access to the database (i.e. DBA, Hacker)
+can't get sensetive information (except those currently logged in)
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+\begin{itemize}
+  \item Put the encryption in the server side, no special requirement in client side
+  \item Combines the encryption logic with SQL (more application specific encryption)
+  \item Allows advanced ACL, like visible inside a group via Key Chaining
+\end{itemize}
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+It provides an almost drop in solution for popular RDBMS for encrypting sensitive
+information.
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item What happens whe user change password, group (in phpBB forum) change access?
+  \item The overhead (20\%) is small for applications like phpBB, but what about facebook, even 1\% means a lot of money
+  \item RDBMS are not the only datastore, also even for RDDMS, the full text search functionality is often provided by external application
+  like Solr and Elasticsearch, can the proxy work with NoSQL, search engine
+  \item Is there any production environment using CryptoDB like encryption proxy method? The paper has been there for a while (since 2011)
+  \item How do large companies avoid their engineers from accessing sensitive user data
+  \item When there are data mining and machine learning stuff, CryptoDB can't avoid exposing sensitive personal information.
+  i.e. sometimes even the proccessed data can be inversed and point the exact person.
+\end{itemize}
+
+\end{document}
