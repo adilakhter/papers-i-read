@@ -1,0 +1,62 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: Rethinking Data-Intensive Science Using Scalable Analytics Systems
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Current analytics system for scientific worloads are low efficient and error prone
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+\begin{itemize}
+  \item Utilizes existing industry solutions, Spark, Parquet
+  \item More general by using a OSI like layer model
+  \item Require less custom logic by the user
+\end{itemize}
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+Because science data are getting bigger, and using HPC may no longer be the ultimate solution,
+cloud service makes running large scale analysis cheaper
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item Providing a general system is good, but I think for some specific areas, it may not be a bad idea to build a specific system, like for genomic,
+I could build a system that works for genomic but not work for astronomy. I think pharma companies can make huge profit from genomic researches, and I
+don't think they would like to sacrifice performance for other scientific fields.
+  \item This paper reminds me of SETI https://setiathome.berkeley.edu/ , which I read from magzine when I didn't have internet access. I think this could
+be another future for large scale scientific computing, no matter how large AWS is, it can not beat the world. Pepole around world were generating bitcoin,
+whose only purpose is been a currency. What if the computation can also benifit scientific computing
+  \item Combing a bunch of frameworks and make them work is a hard work, and I think that's why papers like this and companies like Cloudera, MapR, Datastax exists.
+However I believe in the future, paper like this will become legacy, so does those companies who provide consulating and enterprise version for open source softwares.
+The advancement in AI will outperform most huamn when it comes to combine and tuning stuff. i.e. Peloton, the self driving database.
+  \item I think Prof. Carlos's group had published some paper called Sci Hadoop, but never looked into them.
+\end{itemize}
+
+\end{document}

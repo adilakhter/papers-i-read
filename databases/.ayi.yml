@@ -9,7 +9,8 @@ install:
   # - xelatex heron
   # - xelatex data-ingestion-connected-world
   # - xelatex concurrency_control_performance_modeling
-  - xelatex cryptdb
+  # - xelatex cryptdb
+  - xelatex science-using-industry-system
 scripts:
   clean:
     - sh -c "rm -f *.log *.aux *.out"
