@@ -1,0 +1,66 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: Gorilla: A Fast, Scalable, In-Memory Time Series Database
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Build a time series database that support the high throughput need for facebook's
+monitoring.
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+\begin{itemize}
+  \item Use delta of delta to compress time series data with non fixed interval
+  \item Use an in memory database instead of LSM like.
+\end{itemize}
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+\begin{itemize}
+  \item The compress algorithm is simply but efficient
+  \item It works for facebook
+\end{itemize}
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item It uses batching on logging, so latest data will lost if the server crashed, they flush log in batches to improve
+  performance
+  \item The opensource version comes out late 2016, and some ideas are different from
+  the paper (people who wrote the paper are not people who wrote the paper),
+  and it can be barely used as a database, it provides little API and some code are forgotten when they open source it.
+  \item A lot of Facebook C++ libraries are used, so the core code is not very long
+\end{itemize}
+
+Miscellaneous
+
+\begin{itemize}
+  \item Contributed a Vagrantfile for the project
+  \item Can only build on Ubuntu 16.10
+\end{itemize}
+
+\end{document}
