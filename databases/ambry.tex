@@ -1,0 +1,60 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: Ambry: LinkedIn's Scalable Geo-Distributed Object Store
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Build a object storage system that support both large amound of very small file and large files for LinkedIn's media storage
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+\begin{itemize}
+  \item HA and horizontally scalable
+  \item Compared with linkedin's previous generation solution, the system is built on top of opensource softwares and no longer bounded to specific vendor
+  \item GEO distributed, active-active
+\end{itemize}
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+\begin{itemize}
+  \item Media has unique access pattern, immutable, various size, streaming, read heavy, focus on recent data etc, thus exisiting system is not a good fit
+  \item Media has become more and more important, with the trend of VR, the requirement for media storage system becomes higher
+  \item Group object into partition to avoid the overhead of many small objects, use log to store blob.
+\end{itemize}
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item The idea of using a preallocated log file to store blob, and has an index to locate blobs is relatively fresh to me, other parts are pretty similar to most systems.
+  \item Ceph didn't rely on file system like ext and built their own file system layer to gain better control, I think this approach can also be taken.
+  for media store
+  \item I think small object and large object should be store in two different subsystem to gain better optimization, the need for images and video is totally different,
+  there could be needs like filtering out video that contains illegal contents, which requires powerful CPU and/or GPU, and it might be a good idea to have the video data on
+  the exact computing machine or very close to it.
+\end{itemize}
+
+\end{document}
