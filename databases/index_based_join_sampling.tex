@@ -1,0 +1,59 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: Cardinality Estimation Done Right: Index-Based Join Sampling
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Estimate cardinality in an accurate and efficient manner to optmize execution plan in database
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+\begin{itemize}
+  \item consider modern hardware, where memory is cheaper and a lot of data sits in memory instead page in and out with disk regularly
+  \item utilizes existing index structure, which is 'much cheaper than joining independent samples as the sample size stays roughly constant after each additional join'
+  \item have a timeout, fallback to traditional if sampling took too long
+\end{itemize}
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+\begin{itemize}
+  \item join is an important features for RDBMS, and is also very useful for OLAP, with data size grown, clever execution plan
+  is needed to keep response time at an accepted level. (a.k.a user can write stupid query but database should execute them in a smart way)
+  \item the sampling overhead is acceptable and has fallback
+\end{itemize}
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item SparkQL also mentioned their optimization, can this work be applied to Spark? I think they didn't mention join much in the paper,
+  btw: most time Spark use other RDBMS as data source via JDBC, it does not have much control.
+  \item Materialized is pretty popular these days, which you put everything together when you create the new record, i.e. Cassandra,
+  which use space to trade time. Is it possible to make the database to be smart enough to decide when it should materialize, when it
+  should keep the relation, and make this operation transparent to the user.
+\end{itemize}
+
+\end{document}

@@ -12,7 +12,8 @@ install:
   # - xelatex cryptdb
   # - xelatex science-using-industry-system
   # - xelatex gorilla
-  - xelatex ambry
+  # - xelatex ambry
+  - xelatex index_based_join_sampling
 scripts:
   clean:
     - sh -c "rm -f *.log *.aux *.out"
