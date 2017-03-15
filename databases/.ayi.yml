@@ -13,7 +13,8 @@ install:
   # - xelatex science-using-industry-system
   # - xelatex gorilla
   # - xelatex ambry
-  - xelatex index_based_join_sampling
+  # - xelatex index_based_join_sampling
+  - xelatex relationalcloud
 scripts:
   clean:
     - sh -c "rm -f *.log *.aux *.out"

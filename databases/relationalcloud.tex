@@ -1,0 +1,55 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: Relational Cloud: A Database as a Service for the Cloud
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Build a multi tenacy database as service to decrease the cost per user.
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+\begin{itemize}
+  \item Integerate with CryptDB to imporve privacy, DB Admin can't snoop most data.
+\end{itemize}
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+Because maintain database has huge cost and cloud is the trend.
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+	\item A lot problem it mentioned are solved now. VM is replaced by container (i.e. docker), lightweight virtualization
+  reduce the overhead of virtualization. Resource monitoring and scheduling can be solved with frameworks like Mesos and Kubernetes.
+  , with consideration of stateful services like Database.
+  And for obtaining the pattern of the workload, there are databases using machine learning to get the pattern.
+  \item From the paper I can't see how their design is better than AWS and Azure except the CryptDB part.
+  \item The development seems stop after 2013, the url only has a wiki with some notes on it.
+\end{itemize}
+
+\end{document}
