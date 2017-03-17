@@ -1,0 +1,70 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[a4paper]{geometry}
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\begin{itemize}
+  \item Name: Pinglei Guo
+  \item Assignment: Comdb2 Bloomberg's Highly Available Relational Database System
+  \item Last Modified: \today
+\end{itemize}
+
+1. What is the problem authors are trying to solve
+
+\medskip
+
+Build a tfull featured RDBMS that can scale, no compromise for HA.
+
+\bigskip
+
+2. How does the authors’ approach or solution improve on previous approaches to that problem
+
+\medskip
+
+\begin{itemize}
+  \item Didn't settle for eventual consistency
+  \item Full transcation support, not just micro transaction
+  \item Support rich stored procedures using a dialect of lua
+\end{itemize}
+
+\bigskip
+
+3. Why is this work important
+
+\medskip
+
+\begin{itemize}
+  \item It's another example (among the many like spanner) showing that the loose schema and transaction advocated by NoSQL
+  is not the only solution to database that need to scale and have full features.
+  \item It has been used in BLP since 2004, and we didn't hear bad names from BLP due to its database.
+\end{itemize}
+
+\bigskip
+
+4. Your comments/questions
+
+\medskip
+
+Questions
+
+\begin{itemize}
+  \item It is 2017 and still no sign of its code on GitHub.
+  \item Speical hardware is needed just like spanner to acheive HA and consistency in one system.
+  One good thing about real world compared with theory, what it is impossible in theory (i.e. CAP) can be achieved in real world as long as you have some tolerance.
+  \item Percona, the variant of MySQL is also mentioned in the evaluation, I think it's a better choice for most medium sized companies,
+  for they don't have the experience and resource to build a new database like BLP and SAP did, using databases with commercial support
+  is the best way to keep growing their bussiness.
+  \item the complex logic has to be somewhere in the system, Comdb2 takes the burden into implementaion and API, giving the application
+  developer more time to focus on the bussiness logic. But one could argue that if the application is strong enough, the developer could
+  actually spend time on developing higher level things, like payment as a service free developer from keeping track of orders and payments,
+  they don't even need to know what database their PaaS provider is using.
+\end{itemize}
+
+Miscellaneous
+
+\begin{itemize}
+  \item The author of SQLite (Richard Hipp) is mentioned in conclusion, though what he did is not mentioned.
+\end{itemize}
+
+\end{document}
