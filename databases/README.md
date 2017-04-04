@@ -1,5 +1,7 @@
 # Databases
 
+TODO: update the list and add ack
+
 ## Time series
 
 - [Gorilla: A Fast, Scalable, In-Memory Time Series Database](gorilla.md)
@@ -9,7 +11,7 @@
 
 General topics reading are mainly from CMPS 278's course requirement
 
-### Optimization 
+### Optimization
 
 - [Encapsulation of Parallelism in the Volcano Query Processing System](parallel_volcano.md)
 - [Access path selection in a relational database management system](access_path_RDBMS.md)
