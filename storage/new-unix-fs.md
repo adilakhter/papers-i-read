@@ -1,10 +1,12 @@
 # A Fast File System for Unix
 
+1984
+
 ## Take away
 
 - 'Problems with the file system performance have been delt with extensively in the literature' nice sentence for introduction
 
-## Abstract 
+## Abstract
 
 - cluster data that is sequentially accessed
 - provide two block sizes for large and samll files
@@ -50,16 +52,16 @@ Old system
   - fragments are addressable, normally 2, 4 or 8 fragments
   - specified when create file system
 - [ ] what is the difference of fragments and small blocks? mixed block size? fragments == smaller blocks?
-- using 4096/1024 the waste ratio is close to 1024 
+- using 4096/1024 the waste ratio is close to 1024
 - **FS can't be completely full**, only the admin can allocate new block
 
-### 3.2 File sytem parameterization 
+### 3.2 File sytem parameterization
 
 - add paramters to know underlying hardware better, processor, disk etc.-
   - spin rate
   - [ ] should be applied to SSD as well, even though there is no more spin
 
-### 3.3 Layout policies 
+### 3.3 Layout policies
 
 - global policies
 - local optimal
@@ -97,7 +99,7 @@ these functional enhancements were introduced at this time.
 ### 5.2 File locking
 
 - old file system use another file as lock
-  - need to be manually removed 
+  - need to be manually removed
 - Hard locks
 - Advisory locks (chosen)
   - only effective when all program use adviosry locks
@@ -121,5 +123,5 @@ A symbolic link is implemented as a file that contains a pathname.
 
 ### 5.5 Quotas
 
-- soft limit (got warning) 
+- soft limit (got warning)
 - hard limit (terminate the program)
