@@ -22,7 +22,7 @@
   - [ ] so separated log for index?
 - recovery only need most recent portion of the log
 - clean policy: generation based, 'segregates older, more slowly changing data from younger rapidly changing data and treats them differently during cleaning'
-  - [ ] like Java GC?
+  - [x] like Java GC? Yeah, mentioned in related work
 - 'Unix systems use only 5%-10% of a disk's raw bandwidth for writing new data; the rest of the time is spent seeking'
   - [ ] spin drive can only do read or write at one time I guess, what about SSD?
 
@@ -228,17 +228,31 @@ A checkpoint is a position in the log at which all of the file system structure 
   - outputs a special record in the log for each directory change *directory operation log*
   - appears in the log before the corresponding directory block or inode
   - additional synchronization to prevent directory modifications when checkpoints are being written
-  
+
 ## 5. Experience with the Sprite LFS
+
+roll-forward is not deployed in production system, simply discard what has been wrote
 
 ### 5.1 Micro-Benchmarks
 
+**the benchmarks are synthetic so they do not represent realistic workloads, but they illustrate the strengths and weaknesses of the two file systems**
+
+This first is optimistic because no cleaning is included
+
 ### 5.2 Cleaning Overheads
+
+- over a period of several months on a production system
+- production is substantially better than predicted by simulation
+  - real world has more locality
+  - hot and cold is not that evenly distributed, some code file never got visited
 
 ### 5.3 Crash Recovery
 
 ### 5.4 Other Overheads in Sprite LFS
 
 ## 6. Related Work
+
+- generation based segment cleaning approach like garbage collection in programming languages
+- database do not use the log as the final repository for data
 
 ## 7. Conclusion
