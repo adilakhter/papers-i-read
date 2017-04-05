@@ -104,20 +104,131 @@ A comparison in Figure 1
 
 ### 3.2 Free Space Management: Segments
 
+- threading (find the wholes and put into them)
+  - severely fragmented
+- copy living data out of log to leave large free extents for writing
+  - cost for long lived files
+
+Combine threading and copying
+
+- divided into large fixed-size extents called segments
+- any given segment is always written sequentially from its beginning to its end
+  - [ ] isn't linkedin's new object store stack log above the log of file system
+- all live data must be copied out of a segment before the segment can be rewritte
+- log is threaded on a segment-by-segment basis
+- segment size is chosen large enough that the transfer time to read or write whole segment is much greater than the cost a seek to the beginning of the segment
+- **512KB/1MB**
+- Unix FFS block size is **4096/512B** (which is much smaller than a segment)
+
 ### 3.3 Segment Cleaning Mechanism
 
-### 3.4 Segement Cleaning Policies
+The process of copying live data out of a segment is called segment cleaning
+
+- read a number of segments into memory
+- identify the live data
+  - [ ] TODO: how do you mark some on disk data as delete? are there any in place update?
+- write the live data back to smaller number of clean segments
+
+segment summary block
+
+- identify which blocks of each segment are live
+- identify the file to which each block belongs and the position of the block within the file
+- file number
+- block number
+- **multiple summary blocks** when more than one log write is needed to fill the segment
+- also used for **crash recovery**
+
+Live
+
+- keep version number in the inode map entry for each file, incremented when file deleted or truncated to length zero
+- uid = ver + inode number
+- summary block record uid for each block, if the uid does not match inode map's, discard the block without examing the
+file's inode
+  - [ ] TODO: each blocks also contains information about the inode pointing to them? double linked?
+- no free block list or bitmap, easy for recovery
+  - [ ] TODO: it seems they exists in Unix FFS?
+
+### 3.4 Segment Cleaning Policies
+
+Issues
+
+- When should segment cleaner be executed
+- How many segments should it clean at a time
+- **Which segment should be cleaned**
+  - not the most fragmented
+- **How should the live blocks be grouped when they are written out**
+
+write cost: the average amount of time the disk is busy per byte of new data written
+
+- 1.0 perfect
+- 10, 1/10 is used for writing, others for seeking, rotational latency, or cleaning
+
+u: utilization of the segments, 0 <= u <= 1,
+
+write cost = 2 / ( 1 - u )
+
+- performance can be improved by reducing the overall utilization of the disk space
+- Unix FFS is not sensitive to disk utilization
+
+key: **bimodal segment distribution** where most of the segments are nearly full, a few are empty of nearly empty
 
 ### 3.5 Simulation Results
 
+Pattern is harsher than reality
+
+- random access pattern
+- locality
+
+Two pseudo random access pattern
+
+- Uniform
+- Hot and Cold (90% and 10%)
+
+Simulation
+
+- hot and cold segments must be treated differently by the cleaner
+  - **free space in a cold segment is more valuable than in hot segement**
+  - once a cold segment has been cleaned it will take a long time before it reaccumulates the unused free space
+  - the older the data in segment the longer it is likely to remain unchanged
+
+New Policy: cost-benefit
+
+benefit / cost = free space generated * age of data / cost = (1 - u) * age / (1 + u)
+
+- [ ] TODO: most of the segments cleaned are hot
+
 ### 3.6 Segment Usage Table
+
+- number of live bytes in the segment
+- the most recent modified time of any block in the segment
+- [ ] where does it resides
+- [ ] merge it with inode table
 
 ## 4. Crash Recovery
 
+traditional Unix file systems without logs must scan all of the metadata structure on disk to restore consistency
+
+- [ ] How do you know where the end of the log is?
+
 ### 4.1 Checkpoints
+
+A checkpoint is a position in the log at which all of the file system structure are consistent and complete
+
+- all modified information to the log
+- fixed *checkpoint region*
+- **two checkpoint regions** in order to handle a crash during a checkpoint operation
+- 30s checkpoint interval
+- can also use checkpoint by size
 
 ### 4.2 Roll-Forward
 
+- try to recover as much as possible, don't discard all non checkpoint data right way
+- use information in segment summary blocks to recover recently written file data
+- restore consistency between directory entries and inodes
+  - outputs a special record in the log for each directory change *directory operation log*
+  - appears in the log before the corresponding directory block or inode
+  - additional synchronization to prevent directory modifications when checkpoints are being written
+  
 ## 5. Experience with the Sprite LFS
 
 ### 5.1 Micro-Benchmarks

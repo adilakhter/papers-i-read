@@ -52,7 +52,7 @@ Old system
   - fragments are addressable, normally 2, 4 or 8 fragments
   - specified when create file system
 - [ ] what is the difference of fragments and small blocks? mixed block size? fragments == smaller blocks?
-- using 4096/1024 the waste ratio is close to 1024
+- using 4096/1024 the waste ratio is close to 1024 (byte)
 - **FS can't be completely full**, only the admin can allocate new block
 
 ### 3.2 File sytem parameterization
