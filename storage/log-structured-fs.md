@@ -4,6 +4,11 @@
 
 ## Take away
 
+- use simulator to investigate the algorithm, can focus more on algorithm
+- try to bench only one thing in one micro bench, segment cleaning is not measured at first
+- use log as the final data repository instead of just for crash recovery
+- batch, sequential, append
+
 ## Abstract
 
 - write all modifications to disk sequentially in a log-like structure
