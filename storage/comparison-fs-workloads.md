@@ -4,6 +4,10 @@ UCB & UW, 2000, 15 Pages
 
 ## Take away
 
+- elucidate: make (something) clear; explain
+- mmap is used a lot
+- large file system cache may not help much
+
 ## Abstract
 
 How modern workloads affect the ability of fs to provide high performance to users
@@ -19,7 +23,48 @@ How modern workloads affect the ability of fs to provide high performance to use
 
 ## 1. Introduction
 
+Different community have different workload
+
+- Unix, Windows NT
+- Client, Server
+- Instructional, Research, Production
+
+Difference with Sprite Study (Measurements of a Distributed File System)
+
+- Focus on IO instead of cache and virtual memory
+
+Machines
+
+- HP-UX instructional laboratory (INS)
+- HP-UX research (RES)
+- HP-UX web server (WEB)
+- Windows NT personal
+
+Result
+
+- diminishing benefits for large cache size
+- memory-mapping become popular file access method
+- individual files tend to have bimodal access patterns, they are either read-mostly or write-mostly.
+
 ## 2. Related Work
+
+- most concentrate on static data, examining metadata at one or several frozen instants in time
+- Dynamic traces are more detail but required modification of Kernel
+  - record file system events pass over a network
+- Problem of modifying kernel
+  - not all kernel have public source
+  - user have to accept the altered kernel
+  - overhead of fine-grained traces
+
+Previous
+
+- BSD study
+- Sprite study
+- NT (Voge99)
+
+Novel
+
+- effect of memory-mapping files on the file cache
 
 ## 3. Trace Collection
 
@@ -29,7 +74,15 @@ How modern workloads affect the ability of fs to provide high performance to use
 
 #### 3.2.1 HP-UX Collection Methodology
 
+- auditing subsystem originally designed for security purpose
+- problem is file path is not complete
+  - record process working directory
+  - cache all the cd
+
 #### 3.2.2 Windows NT Collection Methodology
+
+- file system filter driver
+- fast path (dispatch)
 
 ## 4. Results
 
@@ -65,5 +118,10 @@ efficacy: the ability to produce a desired or intended result.
 
 ## 5. Conclusions
 
-
-
+- WEB has far more read than write
+- average block lifetime, and even the distribution of block lifetimes, varies significantly across workloads.
+  - NT lives longer
+- small cache biu!, large cache, may not
+- all modern workloads use memory-mapping to a large extent
+- larger file size
+- file access patterns are bimodal in that most files tend to be mostly-read or mostly-written.
