@@ -1,6 +1,10 @@
 # The TickerTAIP Parallel RAID Architecture
 
-HP Lab 1994
+HP Lab 1994 ... JOHN WILKES,
+
+## Related
+
+- [The HP AutoRAID Hierarchical Storage System](hp-auto-raid-hierarchical.md)
 
 ## TODO
 
@@ -68,10 +72,10 @@ Experiments
 - Originator: host interface
 - Worker: connect to disk
 
-assume **parity calcution is a driving factor in determing the performance of a RAID array**
+assume **parity calculation is a driving factor in determining the performance of a RAID array**
 
 - several originator node connect to different host
-- a single host can be connected to multiple originators for higher performance and greator failure resilience
+- a single host can be connected to multiple originators for higher performance and greater failure resilience
 
 processors are cost-effective engines for calculation parity
 
