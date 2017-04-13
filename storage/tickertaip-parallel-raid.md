@@ -50,4 +50,59 @@ Existing
 - disjoint set of disks
   - [ ] limit the performance available from the array (but why?)
 
-TODO: now comes to their design
+New Architecture
+
+- a cooperating set of array controllers nodes
+  - fault tolerance
+  - performance scalability
+  - smooth incremental growth
+  - flexibility
+
+Experiments 
+
+- working prototype
+- event based simulation
+
+## The TICKERTAIP Architecture
+
+- Originator: host interface
+- Worker: connect to disk
+
+assume **parity calcution is a driving factor in determing the performance of a RAID array**
+
+- several originator node connect to different host
+- a single host can be connected to multiple originators for higher performance and greator failure resilience
+
+processors are cost-effective engines for calculation parity
+
+- processors are cost-effective engines for calculation parity
+- memory bandwidth, rather than processor cycles, is the determining cost factor in providing this functionality
+- the cheap commodity microprocessors it uses for the control functions can also be used as the parity calculation engines
+
+## Related Work
+
+- make extensive use of well-known DB techniques such as two-phase commit, partial write ordering
+- RADD (Distributed Disks) is for wide area network, while this paper is for everything in one cabin
+
+## Design Issues 
+
+RAID 5 as example
+
+- normal mode read
+  - skip parity blocks
+- normal mode write
+  - how to calculate new parity
+    - full stripe 
+    - small stripe
+    - large stripe
+- where to calculate new parity
+  - every node has processor, can put it in non originator nodes
+  - at originator
+  - solely-parity (use more messages, ignored)
+  - at-parity
+
+### Single Failures - Request Atomicity
+
+
+  
+
