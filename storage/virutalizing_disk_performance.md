@@ -5,7 +5,7 @@
 ## Ref
 
 - Virtualizing Disk Performance with Fahrrad https://www.usenix.org/legacy/event/fast08/wips_posters/povzner-wip.pdf
-- Zygaria: Storage performance as a managed resource.
+- Zygaria: Storage performance as a managed resource. https://www.researchgate.net/publication/4233091_Zygaria_Storage_Performance_as_a_Managed_Resource
   - is based on this system and replace IOPS with throughput
 
 ## Take away
@@ -131,7 +131,7 @@ admit or deny request for new virtual disks or change in virtual disk parameters
 - based on a weighted moving average of each virtual device over the last few seconds the scheduler determines which device should get scheduled
 - the scheduling algorithm determines which I/O request to schedule next as follows
   - eliminate device reach/above limit or not requests
-  - EDF scheduling:
+  - EDF (earliest dead line first) scheduling:
     - which device has the earlies deadline
     - select the virtual device with the lowest usage
 - when a virtual device is selected, its I/O request is sent to the low-level device driver the **accounting** for the virtual device is updated to reflect the request
