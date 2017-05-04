@@ -11,6 +11,12 @@
   - [ ] what about NVM
 - [ ] maximum append throughput is not a function of any single node's I/O bandwidth
 
+## Take away
+
+- a global shared log for total order
+- use sequencer for performance, use ? for correctness, separation of concern
+- disaggregation data center
+
 ## Review on Review
 
 - `seal` operation use epoch, how to avoid time(clock) skew
