@@ -10,6 +10,8 @@ FAST 2016, UW
 
 - Write (read) amplification is defined as the ratio between the amount of data written to (read from) the underlying storage device and the amount of data requested by the user
 - Figure3 use a Samsung 840 EVO SSD lol (I got a 850)
+- `posix_fadvise`
+- `fallocate`
 
 ## TODO
 
@@ -97,7 +99,7 @@ and the amount of data requested by the user
 ## 3. WiscKey
 
 - split key with value, keys in lsm tree, value in log
-- use parallel random read of SSD for range query 
+- use parallel random read of SSD for range query
 - unique crash consistency, garbage collection to efficiently manage the value log
 - optimize performance by removing the LSM-tree log without sacificing consistency
 
@@ -111,3 +113,63 @@ and the amount of data requested by the user
 - compaction is the major performance cost
 - compaction only needs to sort keys, while values can be managed seperately
   - [ ] this can also apply to xephon-k, only sort the upper level (lower granularity)
+- keys are usually smaller than values
+
+````
+---------------------------------
+<key, addr> | <key, addr> | ....
+---------------------------------
+
+---------------------------------
+value | value | ....
+----------------------------------
+````
+
+- [ ] keys can be easily cached in modern servers which have over 100-GB of memory
+
+### 3.3 Challenges
+
+#### 3.3.1 Parallel Range Query
+
+- LevelDB provide an iterator-based interface
+- Use pre-fetch with multiple threads
+
+#### 3.3.2 Garbage Collection
+
+- need a special garbage collector to reclaim free space in the vLog
+  - because compaction only gc keys
+- also store key in the value log
+- read a chunk, and wrote the new values back to the original position and make some space (update the tail)
+  - [ ] TODO: what about the data written at the old tail?
+- periodically or threshold
+
+#### 3.3.3 Crash Consistency
+
+- trust that file sytem will recover data in order
+- [ ] what about the write ahead logging?
+- or it's just talking about file system crash?
+
+### 3.4 Optimizations
+
+#### 3.4.1 Value-Log Write Buffer
+
+- write in large batch to reduce the overhead of system calls
+- fist search buffer
+- [ ] Isn't this exactly what LSM Tree do ....
+
+#### 3.4.2 Optimizing the LSM-tree Log
+
+- vLog has keys as well, so no need for WAL?
+  - [ ] TODO: but they buffer the vLog?
+  - [ ] Does LevelDB also buffer their WAL?
+
+### 3.5 Implementation
+
+- [ ] posix_fadvise
+- fallocate 
+  - punching a hole in a file system can fee the physical space allocated?
+
+## Evaluation
+
+- two Xeon E5, 64GB RAM, 500 GB Samsung 840 EVO SSD
+- use the `ALICE` tool to create failure?
