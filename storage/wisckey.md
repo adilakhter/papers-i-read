@@ -95,3 +95,19 @@ and the amount of data requested by the user
 - when random reads are issued concurrently in an SSD, the aggregate throughput can match sequential throughput for some workloads
 
 ## 3. WiscKey
+
+- split key with value, keys in lsm tree, value in log
+- use parallel random read of SSD for range query 
+- unique crash consistency, garbage collection to efficiently manage the value log
+- optimize performance by removing the LSM-tree log without sacificing consistency
+
+### 3.1 Design Goals
+
+- [ ] how to build relational database on top of K-V
+- support snapshots
+
+### 3.2 Key-Value Separation
+
+- compaction is the major performance cost
+- compaction only needs to sort keys, while values can be managed seperately
+  - [ ] this can also apply to xephon-k, only sort the upper level (lower granularity)
