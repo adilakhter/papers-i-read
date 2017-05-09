@@ -18,6 +18,10 @@ Mike Freedman (the guy talked about timescale is one of the author of vCorfu and
   - Chapter 7 of Distributed Systems: Principles and Paradigms 2/E
   - http://lass.cs.umass.edu/~shenoy/courses/spring05/lectures/Lec15.pdf
 
+## Take away
+
+- like skip list?
+
 ## Review on Review
 
 - based on corfu
