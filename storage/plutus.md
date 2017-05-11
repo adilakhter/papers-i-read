@@ -25,7 +25,7 @@ TODO: there will be a merge conflict
 ## Introduction
 
 - data security is important
-- [OLD] trust the storage server to controll all users' access to this data as well as return the data intact
+- [OLD] trust the storage server to control all users' access to this data as well as return the data intact
   - single user
   - just password
 
@@ -55,11 +55,11 @@ Reason for client side
 - writer
 - server
 
-### 2.1 Untrusted servers and availiability
+### 2.1 Untrusted servers and availability
 
 - use replica
 
-### 2.2 Trussted client machine
+### 2.2 Trusted client machine
 
 - users must trust their local machine
   - is an open problem
@@ -92,12 +92,19 @@ Reason for client side
 - [ ] Box ???
 - use Merkle hash tree like Dynamo
 - entries of directories are encrypted individually
+  - so you can don't encrypt them and allow people to browse
+  - or you just don't want to people see anything
+- [ ] TODO: file-lockbox keys are symmetric keys and are given to readers and writers alike
+  - [ ] so we have do distribute the symmetric key
+- [ ] TODO: a cryptographic hash of the file contents is signed and verified by a public-private key pair
+  - [ ] so the checksum in encrypted using private-pub key pair
 
 ### 3.3 Read-write differentiation
 
 - the file-sign keys are handed to writers only, while readers get the file-verify keys
 - [ ] TODO: so reader got the pub key, writer got the private key? then how the creator revoke it?
 - [ ] TODO: reader's can branch a file and share it with others? multi version?
+- writers get (d, N), while readers get (e, N)
 
 ### 3.4 Lazy revocation
 
