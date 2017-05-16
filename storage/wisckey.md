@@ -4,6 +4,7 @@ FAST 2016, UW
 
 ## Ref
 
+- https://github.com/dgraph-io/badger a native Golang implementation
 - http://pages.cs.wisc.edu/~ll/papers/wisckey-slides.pdf a 100 pages slide ...
 
 ## Take away
@@ -166,7 +167,7 @@ value | value | ....
 ### 3.5 Implementation
 
 - [ ] posix_fadvise
-- fallocate 
+- fallocate
   - punching a hole in a file system can fee the physical space allocated?
 
 ## Evaluation
