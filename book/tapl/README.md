@@ -32,4 +32,4 @@ Class | Day | Date | Topic | Reading | Presenter
 
 1. [Introduction](01-introduction.md)
 2. [Mathematical Preliminaries](02-math-preliminaries.md)
-3. Untyped Arithmetic Expressions
+3. [Untyped Arithmetic Expressions](03-untyped-arithmetic-expressions.md)
