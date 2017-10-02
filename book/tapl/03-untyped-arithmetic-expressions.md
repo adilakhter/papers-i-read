@@ -92,8 +92,80 @@ skip P28
 - we can give *inductive definitions of functions over the set of terms*
 - we can give *inductive proofs of properties of terms*
 
-3.3.1 Definition
+3.3.1 Definition `Constants`
 
-TODO
+````
+Consts(if t1 then t2 else t3) = Consts(t1) \/ Consts(t2) \/ Consts(t3)
+````
+
+3.3.2 Definition `size` (# nodes) `depth`
+
+````
+size(if t1 then t2 else t3) = size(t1) + size(t2) + size(t3) + 1
+depth(if t1 then t2 else t3) = max(depth(t1), depth(t2). depth(t3)) + 1
+````
+
+3.3.3 LEMMA: The number of distinct constants in a term t is no greater than the size of t
+
+- [ ] TODO: detail induction steps
 
 ## 3.4 Semantics
+
+Operational semantics (used exclusively in this book)
+
+- abstract machine
+- state: term
+- behavior: transition function
+- [ ] big step and small step?
+
+Denotational semantics
+
+- semantic domains
+- interpretation function mapping terms into domains
+- domain theory
+
+Axiomatic semantics
+
+- take the laws themselves as the definition of the language
+- invariant
+  - d..d.. dafny
+
+## 3.5 Evaluation
+
+- evaluation relation `t -> t'`, t evaluates to t' in one step
+
+> what these rules do not say is just as important as what they do say
+
+3.5.1 Definition: An *instance* of an inference rule is obtained by consistently replacing each metavariable by the same term in the rule's conclusion and all its premises (if any)
+
+3.5.2
+
+3.5.3 Definition: **one step evaluation** `->` is smallest binary relation on terms, when the pair (t, t') is in the evaluation relation, we say the evaluation statement (or judgment) `t -> t'` is derivable
+
+derivation tree leads to induction on derivations
+
+3.5.4 Theorem[Determinacy of one-step evaluation]: If t -> t' and t -> t'', then t' = t''
+
+3.5.6 Definition: A term t is in *normal form* if no evaluation rule applies to it. i.e. `true` `false`
+
+3.5.7 Theorem: Every value is in normal form
+
+3.5.8 Theorem: If t is in normal form, then t is a value
+
+3.5.9 Definition: The **multi step evaluation** `->*` is the reflexive, transitive closure of one step evaluation
+
+3.5.11 Theorem[Uniqueness of normal forms]: If `t ->* u` and `t ->* u'`, where `u` and `u'` are both normal forms, then `u = u'`
+
+3.5.12 Theorem[Termination of evaluation]: For every term there is some normal form `t'` such that `t ->* t'`
+
+Figure 3.2 Arithmetic expressions
+
+3.5.15 Definition: A closed term is *stuck* if it is in normal form but not a value
+
+> Stuckness gives us a simple notion of run-time error for out simple machine
+
+3.5.17 small & big step
+
+## 3.6 Notes
+
+just reference to books
