@@ -10,7 +10,7 @@
 
 - router 5GB/s
 - Large Hadron Collider (LHC) 300MB/s
-- Long Wavelength Array (LWA) 3/75GB/s
+- Long Wavelength Array (LWA) 3.75GB/s
   - 100 PB/year
 
 Massive amounts continuously written but rarely read
