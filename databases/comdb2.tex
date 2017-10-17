@@ -1,6 +1,8 @@
 \documentclass[12pt,a4paper,oneside]{article}
 \usepackage[a4paper]{geometry}
 \setlength\parindent{0pt}
+% \usepackage{cancel}
+\usepackage[normalem]{ulem} % either use this (simple) or
 
 \begin{document}
 
@@ -49,7 +51,8 @@ Build a tfull featured RDBMS that can scale, no compromise for HA.
 Questions
 
 \begin{itemize}
-  \item It is 2017 and still no sign of its code on GitHub.
+  \item \sout{It is 2017 and still no sign of its code on GitHub}.
+  \item It is now https://github.com/bloomberg/comdb2
   \item Speical hardware is needed just like spanner to acheive HA and consistency in one system.
   One good thing about real world compared with theory, what it is impossible in theory (i.e. CAP) can be achieved in real world as long as you have some tolerance.
   \item Percona, the variant of MySQL is also mentioned in the evaluation, I think it's a better choice for most medium sized companies,
