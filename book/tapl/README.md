@@ -34,6 +34,9 @@ NA | Thu | 23-Nov-17 |   |   |   |   |  
 4. [An ML Implementation of Arithmetic Expressions](04-ml-impl-arith-exp.md)
 5. [Untyped Lambda Calculus](05-untyped-lambda-calculs.md)
 8. [Typed Arithmetic Expressions](08-typed-arithmetic-expressions.md)
+9. [Simply Typed Lambda Calculus](09-simply-typed-lambda-calculus.md)
+11. [Simple Extensions](11-simple-extensions.md)
+13. [References](13-references.md)
 15. [Subtyping](15-subtyping.md)
 17. [An ML Implementation of Subtyping](17-ml-impl-subtyping.md)
 

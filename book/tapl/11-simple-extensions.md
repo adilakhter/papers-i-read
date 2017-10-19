@@ -68,3 +68,70 @@
 - [ ] TODO: feels like hashmap ...
 - order or not order has import impact on performance (15.6)
 - patterns and pattern matching
+
+## 11.9 Sums
+
+- heterogeneous collections of values
+- T1 + T2, T1 is tagged with `inl` and T2 is tagged with `inr`
+- `case`
+- breaks the old Uniqueness of Types theorem
+  - guess, type reconstruction (chap 22)
+  - subtyping (chap 15)
+  - explicit annotation
+
+## 11.10 Variants
+
+- binary sums generalized to labeled variants
+- `<l1:T1, l2:T2>`
+
+Options
+
+- `OptionalNat = <none:Unit, some:Nat>;`
+- null value in C++ and Java is actually an option in disguise
+
+Enumerations
+
+- a variant type in which the field type associated with each label is Unit
+
+````
+Weekday = <monday:Unit, tuesday:Unit, wednesday: Unit>;
+````
+
+Single-Field Variants
+
+````
+V = <l:T>;
+````
+
+usual operations on T cannot be applied to elements of V without first unpacking them: a V cannot be accidentally mistaken for a T
+
+i.e. dollar and euros types
+
+Variants vs. Datatypes
+
+- [ ] more about OCamel details? type and datatype?
+
+Variants as Disjoint Unions
+
+- include all elements from T1 and T2
+- a given element is from T1 or T2
+
+Type Dynamic
+
+- even in statically typed languages, there is often the need to deal with data whose type cannot be determined at compile time
+- data from external sources, database, network, file etc.
+- Dynamic
+
+## 11.11 General Recursion
+
+- fix is a *generator*
+- fix can't be defined in STLC
+  - no expression that can lead to non-terminating computations can be typed using only simple types
+- add fix as a new primitive
+- can also be used to define a record of mutually recursive functions as the fixed point of a function on records
+
+## 11.12 Lists
+
+- base type, Bool, Unit
+- type constructors, -> and X
+- List T describes finite-length lists whose elements are drawn from T
