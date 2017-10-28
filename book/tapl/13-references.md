@@ -39,7 +39,7 @@ Reference and Aliasing
 - `!r`
 - `82`
 
-Shared State 
+Shared State
 
 - but putting incc and decr into a record, we have an object (more in Chap 18)
 
@@ -59,7 +59,7 @@ Garbage Collection
 - take references to be some set of store locations
 - take store to be partial function from location l to values
 
-evalutation rule now takes term and store, not just term anymore
+evaluation rule now takes term and store, not just term anymore
 
 > we simply allow the store to keep growing without bound as evaluation proceeds, This does not affect the correctness of the results of evaluation
 
@@ -75,6 +75,3 @@ It provides two solutions
 ## 13.5 Safety
 
 skipped
-
-
-
