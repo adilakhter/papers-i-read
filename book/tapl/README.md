@@ -32,16 +32,37 @@ NA | Thu | 23-Nov-17 |   |   |   |   |  
 
 1. [Introduction](01-introduction.md)
 2. [Mathematical Preliminaries](02-math-preliminaries.md)
+
+Untyped Systems
+
 3. [Untyped Arithmetic Expressions](03-untyped-arithmetic-expressions.md)
 4. [An ML Implementation of Arithmetic Expressions](04-ml-impl-arith-exp.md)
 5. [Untyped Lambda Calculus](05-untyped-lambda-calculs.md)
+
+Simple Types
+
 8. [Typed Arithmetic Expressions](08-typed-arithmetic-expressions.md)
 9. [Simply Typed Lambda Calculus](09-simply-typed-lambda-calculus.md)
 11. [Simple Extensions](11-simple-extensions.md)
 13. [References](13-references.md)
 14. [Exceptions](14-exceptions.md)
+
+Subtyping
+
 15. [Subtyping](15-subtyping.md)
+16. [Metatheory of Subtyping](16-metatheory-of-subtyping.md)
 17. [An ML Implementation of Subtyping](17-ml-impl-subtyping.md)
+18. [Case Study: Imperative Objects](18-imperative-objects.md)
+19. [Case Study: Featherweight Java](19-featherweight-java.md)
+
+Recursive Types
+
+20. [Recursive Types](20-recursive-types.md)
+21. [Metatheory of Recursive Types](21-metatheory-of-recursive-types.md)
+
+Polymorphism
+
+22. [Type Reconstruction]
 
 ## Exercises
 
