@@ -38,6 +38,7 @@ Untyped Systems
 3. [Untyped Arithmetic Expressions](03-untyped-arithmetic-expressions.md)
 4. [An ML Implementation of Arithmetic Expressions](04-ml-impl-arith-exp.md)
 5. [Untyped Lambda Calculus](05-untyped-lambda-calculs.md)
+7. [An ML Implementation of the Lambda-Calculus](07-ml-impl-lambda-calculus.md)
 
 Simple Types
 
