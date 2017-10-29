@@ -63,7 +63,7 @@ Recursive Types
 
 Polymorphism
 
-22. [Type Reconstruction]
+22. [Type Reconstruction](22-type-reconstruction.md)
 
 ## Exercises
 
