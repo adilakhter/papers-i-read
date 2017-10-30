@@ -115,8 +115,66 @@ so it is omitted ...
 
 ## 15.5 Subtyping and Other Features
 
+### Ascription and Casting
+
+(T) t
+
+- up-casts
+  - hide existence of some parts
+- down-casts
+  - compile time, accepts the type given, but insert a runtime check
+  - in runtime, verify
+  - the evaluation rule can't discard annotation, but need to validate it at runtime
+  - loss progress
+
+Odersky argued it's better to extend the Java type system with real polymorphism (Chapter 23 Universal Types),
+but adds too much complexity to an already-large language
+
+real language combine down-casts with type tags - single word tags, more in (Chapter 19 Featherweight Java)
+
+### Variants
+
+- similar to record, except S-VariantdWidth allow new variant to be added
+- can drop the ascription
+
+### Lists
+
+- [ ] https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)
+in 15.5 Lists, mentionded covariant (records, variants, as well as function types on their right hand side) and contravariant (arrow, on the left-hand side)
+
+### References
+
+The Ref constructor must be taken to be invariant in order to preserve type safety
+
+### Arrays
+
+- should be invariant as reference, but Java allows, it is now considered a design flaw
+
+### References Again
+
+- source and sink
+
+### Channel
+
+just like the one in Go
+
+- input and output channel
+
+### Base Types
+
+we can have Bool <: Nat ....
+
+date <: datetime might be a better example
+
 ## 15.6 Coercion Semantics for Subtyping
+
+- for speed?
 
 ## 15.7 Intersection and Union Types
 
+- few implementation
+
 ## 15.8 Notes
+
+- record polymorphism is subtle
+- OCaml row-variable polymorphism

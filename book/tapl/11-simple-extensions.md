@@ -48,10 +48,19 @@
 
 ## 11.5 Let Bindings
 
+- `let x=t1 in t2` mean evaluate the expression t1 and bind the name x to the resulting value while evaluating t2
 - give names to some of its subexpressions
-  - [ ] TODO: isn't this variable?...
+  - [ ] TODO: isn't this variable?... no, it isn't, i.e. [ocaml local "variables"](http://ocaml.org/learn/tutorials/structure_of_ocaml_programs.html#Local-quot-variables-quot-really-local-expressions)
 - call by value evaluation order like ML  
 - different with other derived form, we can derive its evaluation behavior by desugaring it, but its typing behavior must be built into the internal language
+
+````
+utop # let f a b =
+   let x = a +. b in
+   x +. x ** 2.
+;;
+val f : float -> float -> float = <fun>  
+````
 
 ## 11.6 Pairs
 

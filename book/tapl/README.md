@@ -64,6 +64,7 @@ Recursive Types
 Polymorphism
 
 22. [Type Reconstruction](22-type-reconstruction.md)
+23. [Universal Types](23-universal-types.md)
 
 ## Exercises
 
