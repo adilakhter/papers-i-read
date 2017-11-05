@@ -53,7 +53,7 @@ Subtyping
 15. [Subtyping](15-subtyping.md)
 16. [Metatheory of Subtyping](16-metatheory-of-subtyping.md)
 17. [An ML Implementation of Subtyping](17-ml-impl-subtyping.md)
-18. [Case Study: Imperative Objects](18-imperative-objects.md)
+18. [Case Study: Imperative Objects](18-imperative-objects.md) fullref
 19. [Case Study: Featherweight Java](19-featherweight-java.md)
 
 Recursive Types
@@ -69,3 +69,9 @@ Polymorphism
 ## Exercises
 
 - P493 Solutions to Selected Exercises
+
+## Implementations
+
+- arith 23-39
+- fulluntyped, 51-73
+- untyped, 83-88
