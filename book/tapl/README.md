@@ -75,3 +75,9 @@ Polymorphism
 - arith 23-39
 - fulluntyped, 51-73
 - untyped, 83-88
+- tyarith, 91-98
+- simplebool, 113-116
+- fullsimple, 99-111, 117-146
+- fullref, 153-170, 225-245
+- fullerror, 171-178
+- fullsub, 181-208
