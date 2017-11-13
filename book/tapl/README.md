@@ -65,6 +65,18 @@ Polymorphism
 
 22. [Type Reconstruction](22-type-reconstruction.md)
 23. [Universal Types](23-universal-types.md)
+24. [Existential Types](24-existential-types.md)
+25. [An ML Implementation of System F](25-ml-impl-systemf.md)
+26. [Bounded Quantification](26-bounded-quantification.md)
+27. [Case Study: Imperative Objects, Redux](27-imperative-objects-redux.md)
+28. [Metatheory of Bounded Quantification](28-metathoery-of-bounded-quantification.md)
+
+Higher Order Systems
+
+29. [Type Operators and Kinding](29-type-operators-and-kinding.md)
+30. [Higher-Order Polymorphism](30-higher-order-polymorphism.md)
+31. [Higher-Order Subtyping](31-higher-order-subtyping.md)
+32. [Case Study: Purely Functional Objects](32-purely-functional-objects.md)
 
 ## Exercises
 
