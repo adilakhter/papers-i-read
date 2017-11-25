@@ -10,3 +10,22 @@
 - 23.8 Fragments of System F 358
 - 23.9 Parametricity 359
 - 23.10 Impredicativity 360
+
+## 23.1 Motivation
+
+- reuse code that has different type, but exact same logic, i.e. a list, tree etc.
+
+## 23.2 Varieties of Polymorphism
+
+- type systems that allow a single piece of code to be used with multiple types are collectively known as polymorhpic systems
+  - poly = many
+  - morph = form
+
+There are several forms
+
+- parametric polymorphism
+  - uniform, all the instances behave the same
+  - impredicative or firt-class, used in module systems in ML (OCaml?)
+- ad-hoc polymorphism
+  - exhibit difference behaviors when "viewed" at different types
+  - overloading (static & dynamic)
