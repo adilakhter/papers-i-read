@@ -64,7 +64,7 @@ What's the relationship between ux. T and its one step unfolding
 
 *iso-recursive*
 
-- fold and unfold
+- **fold and unfold**
 - in practice, coalescing them with other annotations
   - ML, datatype, implicitly introduces a recursive type
   - Java, each class definition implicitly introduces a recursive type, invoke method involves an implicit unfold

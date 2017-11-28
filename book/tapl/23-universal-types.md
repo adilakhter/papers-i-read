@@ -11,6 +11,8 @@
 - 23.9 Parametricity 359
 - 23.10 Impredicativity 360
 
+Implementation is fullpoly and fullomega (pairs and lists)
+
 ## 23.1 Motivation
 
 - reuse code that has different type, but exact same logic, i.e. a list, tree etc.
