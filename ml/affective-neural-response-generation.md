@@ -49,3 +49,38 @@
 - [ ] TODO: how to do the visualization? using t-NSE like word embedding?
 - use neutral vector [5, 1, 5] for stop words and proper nouns
 - concatenate W2AV embeddings of each word with its traditional word embeddings, as input for both encoder and decoder
+
+### Affective Loss Functions
+
+Minimizing Affective Dissonance
+
+Maximizing Affective Dissonance
+
+Maximizing Affective Content
+
+### Affectively Diverse Decoding
+
+- beam search (BS)
+  - a tractable approximation of searching an exponentially large solution space
+  - nearly identical samples
+- diverse beam search (DBS)
+
+Bean Search
+
+- top-B most likely (sub)sequence, B is *beam size*
+- [ ] TODO: how to pick bean
+
+Diverse Beam Search
+
+Affectively Diverse Beam Search
+
+## Experiments
+
+- encoder 1 layer LSTM
+- decoder 1 layer LSTM
+- 1024 cells each layer
+- Ada optimizer
+- batch size 64
+- 1024-dim, Word2Vec embeddings, 50 epoch
+
+evaluate based on human evaluation
