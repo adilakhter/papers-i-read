@@ -68,3 +68,22 @@ Tiers
 - *DBMS Worker*  thread of execution in the DBMS that does work on behalf of a DBMS Client. 1:1 mapping.
 
 ### 2.1 Uniprocessors and Lightweight Threads
+
+- os thread support
+  - low cost context switch
+  - not true when many DB was designed
+- uniprocessor hardware
+  - single machine, single CPU
+  - not true today, but easy initial discussion
+
+Three process options (under the simplified assumptions)
+
+- process per DBMS worker
+- thread per DBMS worker
+- process pool
+
+#### 2.1.1 Process per DBMS Worker
+
+- use shared memory
+- supported by DB2, PostgreSQL, Oracle
+  - https://www.postgresql.org/docs/10/static/tutorial-arch.html
