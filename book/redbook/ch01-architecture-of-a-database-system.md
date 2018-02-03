@@ -82,8 +82,26 @@ Three process options (under the simplified assumptions)
 - thread per DBMS worker
 - process pool
 
+[CMU Database Systems - 14 Parallel Execution (Fall 2017)](https://www.youtube.com/watch?v=UKaKiqmX8N8&list=PLSE8ODhjZXjYutVzTeAds8xUt1rcmyT7x&index=14)
+
 #### 2.1.1 Process per DBMS Worker
 
 - use shared memory
 - supported by DB2, PostgreSQL, Oracle
   - https://www.postgresql.org/docs/10/static/tutorial-arch.html
+
+#### 2.1.2 Thread per DBMS Worker
+
+- OS does not protect threads from each other's memory overruns and stray pointers
+- debugging is tricky, especially with race conditions
+- difficult to port across OS due to differences in threading interfaces and multi-threaded scaling
+- used by: DB2, MSSQL, MySQL, Informix, Sybase
+
+#### 2.1.3 Process Pool
+
+- a fixed size of processes, pick one to execute the task
+- kind of like php-fpm and nginx?
+
+#### 2.1.4 Shared Data and Process Boundaries
+
+- Disk I/O buffers:
