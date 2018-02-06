@@ -13,6 +13,7 @@
 
 - benchmark metrics, YCSB-TS query latency and space consumption
   - we can also add host metrics, disk write amplification etc.
+- test mode, run without querying TSDB, the latency of benchmark itself and what the best result could be (baseline)
 
 ## Abstract
 
@@ -25,7 +26,7 @@
 
 - sensor data
 - **TSDB is not accurate**
-- 42 open source 32 commercial, 75 in total (paper is written in 2016)
+- 42 open source 33 commercial, 75 in total (paper is written in 2016)
 - inner and outer
   - inner, calculation support in TSDB and its own storage
   - outer, cluster, HA
@@ -176,4 +177,231 @@ Good metrics 6 characteristics
 
 ### 4.2 Scenarios
 
-- [ ] TODO: P49/P157 .... 
+- energy related setup, sensor data w/ area, building and room etc.
+  - NOTE: hmm, pretty like BtrDB, because their group is doing smart building https://github.com/SoftwareDefinedBuildings
+- one, two and five nodes
+
+Data
+
+- 1,000,000 rows pre loaded (for non INS) into one metric
+  - [x] tag distribution? or just one single time series?
+- ts in milliseconds
+  - range 12 days
+  - in step of 1 second
+    - [ ] even distance?
+- value floating-point from 0 to 10,000
+  - [ ] no negative number and integer?
+- 1,000 tags
+  - [x] key ? on the table it's TAG0, TAG1 .... see Table 4.3
+  - value 10 characters alphanumeric string
+  - each point has 3 tags chosen from a uniform distribution
+
+Ingestion
+
+- load in single row (to simulate sensor)
+- NO batch insert
+
+Query
+
+- SCAN, AVG, SUM, CNT, MIN, and MAX
+
+Phases
+
+- load phase, INS
+- run phase
+  - READ (a timestamp)
+    - don't use tag
+  - SCAN, AVG, SUM and CNT
+    - time range + tags
+      - range picked from 1 - 10s
+      - 1-5 tags, can have empty match
+
+The workload can be changed, see section 4.6
+
+### 4.3  Requirements on the Benchmark
+
+- it is not expected that results between different environments are comparable
+  - [ ] though in real world, it might be what people want to compare, i.e. certain database are locked down to cloud service providers
+- additional node for workload generation
+- **automated deployment and provisioning of the nodes is required**
+  - deploy a vm
+  - provision a database
+- full pipeline, run, collect data, visualize
+
+### 4.4 (4) Components
+
+#### 4.4.1 An Application for Measurement and Execution of Workloads
+
+- inner part (~~as mentioned before~~ that inner was for TSDB ...)
+- executes workloads and measures query latencies
+- **alterable part in workload**
+  - no. of queries in each phase
+  - distribution of different queries (like YCSB, 20% read 80% write etc.)
+  - pre-defined tag or on the fly
+  - tags per row
+  - range of time
+    - [ ] for scan etc.?
+  - increasing or randomized ts
+    - [ ] random interval? (if ts is pure random, some tsdb would just reject the data....)
+  - distribution of randomization values
+  - amount of rows per timestamp
+    - [ ] by controlling tags?
+- execute etc.
+- chose YCSB
+
+#### 4.4.2 An EI Platform that runs multiple VMs
+
+- [ ] EI means Elastic Infrastructure?
+- use Vagrant on AWS and Azure
+  - GCP is expensive ...
+- https://github.com/hashicorp/vagrant/wiki/Available-Vagrant-Plugins does have AWS plugin but is not longer maintained since 2016
+- also support vSphere and OpenStack
+
+#### 4.4.3 An Application to deploy and provision VMs on an EI
+
+- Vagrant
+  - Docker, and IaaS API were considered
+  - Chef, Puppet (didn't mention Ansible) would only create burden
+
+#### 4.4.4 An Application that starts a Measurement, waits for its Termination, and collects and process the Results afterward
+
+Controller TSDBBench
+
+- deploy and provision Vagrant VM
+- run a chosen workload w/ YCSB-TS
+- fetch result after benchmark
+- repeat (optional)
+- combine (optional)
+- generate plot and tables (optional)
+- make sure no error ...
+  - [ ] so what would happen if any step has error? retry?
+- http://www.fabfile.org/ to execute ssh
+
+### 4.5 Architecture
+
+![Figure 4.1 Overview of benchmark architecture](comparison-of-time-series-database-arch.png)
+
+reminds me of Xephon-B .... https://github.com/xephonhq/xephon-b
+
+- https://github.com/TSDBBench/Overlord written in python2
+  - TSDBBench.py
+  - ProcessYcsbLog.py
+  - RunWorkload.py
+
+Provision
+
+- full install including os
+- (Picked) deriving from a base image that contains the operating system
+- create an image for every TSDB
+- two types of vm
+  - generator
+  - tsdb
+
+http://bpmn.io/ BPMN ...(never heard of this graph before)
+
+Collect
+
+- compress ycsb data
+- scp
+
+... detailed steps are skipped
+
+### 4.6 Benchmark
+
+- ts float64 Unix timestamp in milliseconds
+- value float64
+- tags alphanumeric
+  - can pre-generate in order to hit when query w/ tags
+- added clients for Blueflood, Druid, InfluxDB, KairosDB, NewTS, OpenTSDB and Rhombus
+
+> in test mode, the workload is executed the same way as without test mode, but every TSDB interaction (e.g. connection, querying) is not performed. This test mode helps to see what negative performance effects are introduced due to use of YCSB-TS and what would be the lowest latency possible
+
+- Table 4.x updates to YCSB
+
+### 4.7 Peculiarities
+
+special requirements for some TSDB
+
+#### 4.7.1 Group 1: TSDBs with a Requirement on NoSQL DBMS
+
+- Blueflood does not support tags, SUM, and freely chosen granularities
+- KairosDB has two backends H2 and Cassandra
+- NewTS can't filter for tag values and timestamp or time range together
+- OpenTSDB requires 1 ms time range for READ (same as KairosDB)
+
+### 4.7.2 Group 2: TSDBs with no Requirement on any DBMS
+
+- Druid, drop value outside of time window, so shifted to actual time
+- InfluxDB
+- MonetDB
+
+### 4.7.3 Group 3: RDBMS
+
+- single node
+
+## 5 Measurements and Results
+
+- RF Replication factor
+
+### 5.1 Scenario 1: 1,000 READ Queries
+
+#### 5.1.1 N=1 RF=1
+
+- INS
+  - Best: OpenTSDB 0.210 avg, <1ms 99th
+  - Worst InfluxDB, MonetDB, KairosDB w/ H2
+- READ
+  - Best: Blueflood, NewTS, Rhombus
+  - Worst: KairosDB w/ H2 and Cassandra
+- space
+  - Best: Druid 63.4 MB ... so small
+  - Worst: Rhombus, KairosDB H2
+
+#### 5.1.2 N=5 RF=1
+
+- INS
+  - non have benefits from additional 4 nodes ...
+- Query
+  - same
+  - and KairosDB is the worst ....
+- Space
+  - no change
+
+#### 5.1.3 N=5 RF=2
+
+- Space
+  - Druid didn't doubled ... hmm (has three explanation ...)
+  - others doubled
+
+#### 5.1.4 N=5 RF=5
+
+- Space
+  - similar to RF=2, Druid is still e...
+
+...
+
+## Appendix
+
+### A.1 List of TSDBs
+
+skip
+
+### A.5 Hardware and VM Settings
+
+- vSphere w.
+- 3 x Supermicro SuperServer SYS-6027R-TRF ... (such a long name)
+  - 6x E5-2640 25. GHZ
+  - 192 GB RAM 24 x 8 ECC
+- storage
+  - 2 x 120GB Intel 520 SSD
+  - 22 x 1TB 7200 RPM
+
+TSDB VM
+
+- 8 cores
+- 16GB RAM
+- 50 GB HDD
+
+## List of Abbreviations
+
+- EI elastic Infrastructure
