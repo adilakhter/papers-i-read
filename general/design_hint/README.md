@@ -4,7 +4,7 @@
 
 e... 27 pages long
 
-## Requirement for the 200 class
+## Requirement for the CMPS 200 class
 
 Address the following questions about the paper (the first 6 are fairly standard questions). Put your response to each of these questions under: Confidential remarks for the program committee of the reviewer form (see Submission instructions below).
 
