@@ -1,12 +1,13 @@
 # papers-i-read
 
-Papers from course requirements, books, podcasts, blogs and videos.
+Notes for paper, lecture, talk, podcasts and blogs
 
 Active
 
 - [Books](book)
   - [Readings in Database Systems](book/redbook)
 - [Lectures](lecture)
+  - [edx Introduction to Kubernetes](lecture/edx-k8s-intro)
   - [TLA+ video tutorial by Lamport](lecture/lamport-tlaplus)
 - [Time Series](ts) Time series database
 
@@ -29,6 +30,12 @@ Non-active
 - [Software engineering daily](https://softwareengineeringdaily.com/category/podcast/)
 - [CMU Time series lectures Fall 2017](http://db.cs.cmu.edu/seminar2017/)
 
+## Related
+
+- [at15/code-i-read](https://github.com/at15/code-i-read)
+- [at15/pub](https://github.com/at15/pub)
+- **[gaocegege/papers-notebook](https://github.com/gaocegege/papers-notebook)** container orchestration & machine learning
+
 ## License
 
-GPL v3 (might change to creative commons)
+GPLv3 (might change to creative commons in the future)
