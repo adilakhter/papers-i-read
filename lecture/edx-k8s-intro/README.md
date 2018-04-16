@@ -5,6 +5,48 @@
 
 ## Chapters
 
+- Chapter 1: Container Orchestration
+  - docker swarm, k8s, mesos marathon, aws ecs, hashicorp nomad
+- Chapter 2: Kubernetes
+  - binpacking, self-healing, horizontal scaling, service discovery, load balancing
+  - automated rollouts and rollbacks, secrets and configuration management, storage orchestration, batch execution
+- Chapter 3: Kubernetes Architecture
+  - master, worker, etcd
+  - master
+    - api server
+    - scheduler
+    - controller manager, watch state through etcd, take action if desired state is not met
+    - etcd (hmm ... etcd is stand alone instead of master node IMO)
+  - worker
+    - kubelet
+    - container runtime
+    - kube proxy
+  - CNI, get ip address for pod (bridge, MACvlan)
+- Chapter 4: Kubernetes Configuration
+- Chapter 7: Kubernetes Building Blocks
+  - object models
+    - `spec` for desired state, provided by user
+    - `status` for actual state, managed by k8s
+    - examples: Pods, Deployments, ReplicaSets
+  - `kubctl` convert the YAML spec to JSON and sent to API server
+  - [x] TODO: why `spec.template.spec`
+    - attach pod specification to other objects like Deployment using Pod Templates
+  - Pod is the smallest unit, a group of containers for a single application
+  - Labels to assign attributes
+  - Label Selector, equal, set in, notin, exist
+    - [ ] TODO: it seems label selector is deprecated in favor of affinity
+  - Replication Controller **rc**
+  - ReplicationSet **rs** next gen replication controller
+    - only difference is support set equality
+  - Deployments
+  - Namespaces, partition to sub-cluster to group users
+    - kube-system
+    - default
+    - kube-public, special, used for bootstrapping cluster
+    - use resource quote to divide cluster resource within namespaces
+- Chapter 8: Services
+  - [ ] TODO: continue
+
 ## Goals
 
 - [ ] environment setup, seems only mini kube is covered
