@@ -5,8 +5,8 @@ import os
 folder_name = '_bib'
 
 dirs = [
-    'databases',
-    'distributed_systems',
+    'db',
+    'distsys',
     'general',
 ]
 
@@ -23,7 +23,7 @@ def merge_folder(folder):
             content = f.read()
             suffix = '\n% ==== /file: ' + file + ' ====\n'
             merged += prefix + content + suffix
-    return merged            
+    return merged
 
 
 def main():

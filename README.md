@@ -36,16 +36,23 @@ Non-active
 - [Security](security)
 - [Time Series Database](tsdb)
 
-## Ref
-
-- [Software engineering daily](https://softwareengineeringdaily.com/category/podcast/)
-- [CMU Time series lectures Fall 2017](http://db.cs.cmu.edu/seminar2017/)
-
 ## Related
 
 - [at15/code-i-read](https://github.com/at15/code-i-read)
 - [at15/pub](https://github.com/at15/pub)
 - **[gaocegege/papers-notebook](https://github.com/gaocegege/papers-notebook)** container orchestration & machine learning
+
+## Ref
+
+- [Software engineering daily](https://softwareengineeringdaily.com/category/podcast/)
+- [CMU Time series lectures Fall 2017](http://db.cs.cmu.edu/seminar2017/)
+
+## Usage
+
+````bash
+# generate bib
+./script/concat_bib.py
+````
 
 ## License
 
