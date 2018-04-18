@@ -3,6 +3,15 @@
 - issue: https://github.com/at15/papers-i-read/issues/109
 - https://www.edx.org/course/introduction-to-kubernetes
 
+## Take away
+
+- abbrevations
+  - RC, ReplicationController
+  - PV, Persistent Volumes
+  - CRD, Custom Resource Definition
+- DaemonSet allow run a pod on all the nodes
+- Kubernetes Federation for cross cluster
+
 ## Chapters
 
 - Chapter 1: Container Orchestration
@@ -45,7 +54,57 @@
     - kube-public, special, used for bootstrapping cluster
     - use resource quote to divide cluster resource within namespaces
 - Chapter 8: Services
-  - [ ] TODO: continue
+  - service select pods and group them together
+  - service has (v)ip and proxy the traffic using kube-proxy
+  - [ ] how does the edge proxy know which node to talk with? kube-proxy runs on worker node
+    - https://kubernetes.io/docs/concepts/services-networking/service/
+  - service discovery, inject environment variable or DNS
+    - [ ] how can a pod reach all of its peers, i.e. I need gossip between pods
+    - [ ] if there are many services, won't the environment variables explode?
+  - service type
+    - ClusterIP, communicate within a cluster
+    - NodePort, port from the range 30000-32767, on **all** worker nodes, forward to one of the pods
+    - [x] TODO: any other service type
+    - LoadBalancer, using underlying cloud service provider's load balancer feature
+    - ExternalName(IP), CNAME? ... 
+    - https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services---service-types
+- Chapter 9: Deploying a Stand-Alone Application
+  - deployment creates replicaset, which creates n pods using template.spec
+- Chapter 10: Kubernetes Volume Management
+  - https://kubernetes.io/docs/concepts/storage/volumes/#types-of-volumes
+  - Persistent Volumes (PV)
+  - Persistent Volume Claims (PVC)
+- Chapter 11: Deploying a Multi-Tier Application
+  - https://github.com/cloudyuga/rsvpapp
+- Chapter 12: ConfigMaps and Secretes
+  - source can be literal or file
+  - in spec, use `valueFrom` `configMapKeyRef`
+  - secret data is stored as **plain text** inside etcd
+  - encoded using base64
+  - in spec, use `valueFrom` `secretKeyRef`
+- Chapter 13: Ingress
+  - L7 HTTP load balancer
+  - fan out, virtual host
+  - Ingress Controller
+- Chapter 14: Advanced Topics
+  - Annotations, non identifying key value pairs
+  - Deployment, Rollback, auto scaling
+  - Job, cron job
+  - Quota management
+  - **DaemonSet**, pod running all nodes at all times, https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+  - **StatefulSet**, i.e. MySQL cluster, etcd cluster
+  - RBAC
+  - **Kubernetes Federation** cross cluster
+  - CRD, Custom Resource Definition
+  - Helm, a repository for manage charts (bundled kubernetes manifests)
+    - https://github.com/kubernetes/charts
+    - tiller the server run inside k8s
+    - helm, cli runs on your own laptop
+  - Heapster for monitoring, Prometheus, Elasticsearch, fluentd
+- Chapter 15: Kubernetes Community
+  - http://k8sport.org/ get rewards for community contribution
+  - https://www.meetup.com/topics/kubernetes/
+  - https://github.com/kubernetes/community/blob/master/sig-list.md
 
 ## Goals
 

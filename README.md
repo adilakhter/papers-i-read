@@ -7,7 +7,6 @@ Active
 - [Books](book)
   - [Readings in Database Systems](book/redbook)
 - [Lectures](lecture)
-  - [edx Introduction to Kubernetes](lecture/edx-k8s-intro)
   - [TLA+ video tutorial by Lamport](lecture/lamport-tlaplus)
 - [Time Series Database](tsdb) Time series database
 
