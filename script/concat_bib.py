@@ -6,6 +6,7 @@ folder_name = '_bib'
 
 dirs = [
     'db',
+    'devops',
     'distsys',
     'general',
 ]

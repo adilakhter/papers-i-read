@@ -79,6 +79,14 @@
 % ==== /Cassandra ====
 
 % TODO: add other tsdbs
+
+% ==== libtsdb ====
+@online{tsdb:libtsdb,
+  title = {libTSDB},
+  howpublished = {\url{https://github.com/libtsdb}},
+  note = {Accessed: 2018-03-31}
+}
+% ==== /libtsdb ====
 % ==== /file: db/_bib/tsdb.bib ====
 
 % ==== file: db/_bib/recent_academia.bib ====
@@ -177,6 +185,103 @@
 
 % ==== /file: db/_bib/benchmark.bib ====
 
+% ==== file: devops/_bib/provision.bib ====
+% Provisioning
+
+@book{provision:ansible,
+  title={Ansible: Up and Running: Automating Configuration Management and Deployment the Easy Way},
+  author={Hochstein, Lorin and Moser, Rene},
+  year={2017},
+  publisher={" O'Reilly Media, Inc."}
+}
+
+@online{provision:terraform,
+  title = {Terraform},
+  author = {HashiCorp},
+  howpublished = {\url{https://www.terraform.io/}},
+  note = {Accessed: 2018-03-31}
+}
+% ==== /file: devops/_bib/provision.bib ====
+
+% ==== file: devops/_bib/tracing.bib ====
+% Tracing
+% TODO: might put it in distsys?
+
+@online{tracing:zipkin,
+  title = {Open Zipkin},
+  howpublished = {\url{https://zipkin.io/}},
+  note = {Accessed: 2018-03-31}
+}
+
+@online{tracing:jaeger,
+  title = {Uber Jaeger},
+  howpublished = {\url{https://www.jaegertracing.io/}},
+  note = {Accessed: 2018-03-31}
+}
+
+
+% ==== /file: devops/_bib/tracing.bib ====
+
+% ==== file: devops/_bib/benchmark.bib ====
+% Benchmark
+
+@online{devops:bench:locust,
+  title = {Locust},
+  howpublished = {\url{https://github.com/locustio/locust}},
+  note = {Accessed: 2018-03-31}
+}
+% ==== /file: devops/_bib/benchmark.bib ====
+
+% ==== file: devops/_bib/container.bib ====
+% Container
+
+@online{container:docker-compose,
+  title = {Docker Compose},
+  author = {Docker Inc.},
+  howpublished = {\url{https://github.com/docker/compose}},
+  note = {Accessed: 2018-03-31}
+}
+
+% ==== Alibaba ====
+@online{container:alibaba:pouch,
+  title = {Pouch},
+  author = {Alibaba},
+  howpublished = {\url{https://github.com/alibaba/pouch}},
+  note = {Accessed: 2018-03-31}
+}
+
+@online{container:alibaba:dragonfly,
+  title = {Dragonfly},
+  author = {Alibaba},
+  howpublished = {\url{https://github.com/alibaba/dragonfly}},
+  note = {Accessed: 2018-03-31}
+}
+
+% ==== /Alibaba ====
+
+% ==== /file: devops/_bib/container.bib ====
+
+% ==== file: devops/_bib/workflow.bib ====
+% Workflow
+
+% common workflow language 
+% https://github.com/common-workflow-language/common-workflow-language
+@article{workflow:cwl,
+  title={Common Workflow Language, v1. 0},
+  author={Amstutz, Peter and Crusoe, Michael R and Tijani{\'c}, Neboj{\v{s}}a and Chapman, Brad and Chilton, John and Heuer, Michael and Kartashov, Andrey and Leehr, Dan and M{\'e}nager, Herv{\'e} and Nedeljkovich, Maya and others},
+  year={2016}
+}
+
+% reflow
+% https://github.com/grailbio/reflow
+@online{workflow:reflow,
+  title = {Reflow},
+  author = {GRAIL},
+  howpublished = {\url{https://github.com/grailbio/reflow}},
+  note = {Accessed: 2018-03-31}
+}
+% ==== /file: devops/_bib/workflow.bib ====
+
 % ==== file: distsys/_bib/scheduler.bib ====
 % Scheduler
 
@@ -216,6 +321,53 @@
 }
 % ==== /Kubernetes ====
 % ==== /file: distsys/_bib/scheduler.bib ====
+
+% ==== file: distsys/_bib/apache.bib ====
+% Apache
+% stuff that are hard to categorize ...
+
+@online{apache:arrow,
+  title = {Apache Arrow},
+  author = {Apache},
+  howpublished = {\url{https://arrow.apache.org/}},
+  note = {Accessed: 2018-03-31}
+}
+
+
+
+% ==== /file: distsys/_bib/apache.bib ====
+
+% ==== file: distsys/_bib/consensus.bib ====
+% Consensus
+
+@inproceedings{consensus:zookeeper,
+  title={ZooKeeper: Wait-free Coordination for Internet-scale Systems.},
+  author={Hunt, Patrick and Konar, Mahadev and Junqueira, Flavio Paiva and Reed, Benjamin},
+  booktitle={USENIX annual technical conference},
+  volume={8},
+  number={9},
+  year={2010},
+  organization={Boston, MA, USA}
+}
+
+@article{consensus:paxos,
+  title={Paxos made simple},
+  author={Lamport, Leslie and others},
+  journal={ACM Sigact News},
+  volume={32},
+  number={4},
+  pages={18--25},
+  year={2001}
+}
+
+@inproceedings{consensus:raft,
+  title={In search of an understandable consensus algorithm.},
+  author={Ongaro, Diego and Ousterhout, John K},
+  booktitle={USENIX Annual Technical Conference},
+  pages={305--319},
+  year={2014}
+}
+% ==== /file: distsys/_bib/consensus.bib ====
 
 % ==== file: general/_bib/reproduce.bib ====
 % reproduce experiments
