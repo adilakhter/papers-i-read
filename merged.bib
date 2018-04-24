@@ -4,7 +4,7 @@
 % time series database
 
 % ==== Survey ==== 
-@article{tsdb:survey:ieee2017,
+@article{db:tsdb:survey:ieee2017,
   title={Time Series Management Systems: A Survey},
   author={Jensen, S{\o}ren Kejser and Pedersen, Torben Bach and Thomsen, Christian},
   journal={IEEE Transactions on Knowledge and Data Engineering},
@@ -15,7 +15,7 @@
   publisher={IEEE}
 }
 
-@online{tsdb:survey:awesome,
+@online{db:tsdb:survey:awesome,
   title = {Awesome Time Series Databases},
   author = {Pinglei Guo},
   howpublished = {\url{https://github.com/xephonhq/awesome-time-series-database}},
@@ -25,7 +25,7 @@
 
 % ==== Benchmark ====
 % TSDBBench YCSB-TS
-@phdthesis{tsdb:bench:tsdbbench,
+@phdthesis{db:tsdb:bench:tsdbbench,
   title={Comparison of time series databases},
   author={Bader, Andreas},
   year={2016},
@@ -36,7 +36,7 @@
 % ==== InfluxDB ====
 % InfluxDB github repo
 % media: github
-@online{tsdb:influxdb,
+@online{db:tsdb:influxdb,
   title = {InfluxDB},
   howpublished = {\url{https://github.com/influxdata/influxdb}},
   note = {Accessed: 2018-03-31}
@@ -44,7 +44,7 @@
 
 % InfluxDB from RocksDB to Time structured merge tree
 % media: blog
-@online{tsdb:influxdb:rocskdb-to-tsm,
+@online{db:tsdb:influxdb:rocskdb-to-tsm,
   title={The New InfluxDB Storage Engine: Time Structured Merge Tree},
   author = {InfluxData},
   howpublished={\url{https://www.influxdata.com/new-storage-engine-time-structured-merge-tree/}},
@@ -55,7 +55,7 @@
 % ==== /InfluxDB ====
 
 % ==== In Memory ====
-@article{tsdb:memory:gorilla,
+@article{db:tsdb:memory:gorilla,
   title={Gorilla: a fast, scalable, in-memory time series database},
   author={Pelkonen, Tuomas and Franklin, Scott and Teller, Justin and Cavallaro, Paul and Huang, Qi and Meza, Justin and Veeraraghavan, Kaushik},
   journal={Proceedings of the VLDB Endowment},
@@ -70,7 +70,7 @@
 % ==== Cassandra ====
 % KairosDB
 % media: github
-@online{tsdb:cassandra:kairosdb,
+@online{db:tsdb:cassandra:kairosdb,
   title={KairosDB},
   author={Brian Hawkins},
   howpublished={\url{https://github.com/kairosdb/kairosdb}},
@@ -81,7 +81,7 @@
 % TODO: add other tsdbs
 
 % ==== libtsdb ====
-@online{tsdb:libtsdb,
+@online{db:tsdb:libtsdb,
   title = {libTSDB},
   howpublished = {\url{https://github.com/libtsdb}},
   note = {Accessed: 2018-03-31}
@@ -188,14 +188,14 @@
 % ==== file: devops/_bib/provision.bib ====
 % Provisioning
 
-@book{provision:ansible,
+@book{devops:provision:ansible,
   title={Ansible: Up and Running: Automating Configuration Management and Deployment the Easy Way},
   author={Hochstein, Lorin and Moser, Rene},
   year={2017},
   publisher={" O'Reilly Media, Inc."}
 }
 
-@online{provision:terraform,
+@online{devops:provision:terraform,
   title = {Terraform},
   author = {HashiCorp},
   howpublished = {\url{https://www.terraform.io/}},
@@ -207,13 +207,13 @@
 % Tracing
 % TODO: might put it in distsys?
 
-@online{tracing:zipkin,
+@online{devops:tracing:zipkin,
   title = {Open Zipkin},
   howpublished = {\url{https://zipkin.io/}},
   note = {Accessed: 2018-03-31}
 }
 
-@online{tracing:jaeger,
+@online{devops:tracing:jaeger,
   title = {Uber Jaeger},
   howpublished = {\url{https://www.jaegertracing.io/}},
   note = {Accessed: 2018-03-31}
@@ -235,7 +235,7 @@
 % ==== file: devops/_bib/container.bib ====
 % Container
 
-@online{container:docker-compose,
+@online{devops:container:docker-compose,
   title = {Docker Compose},
   author = {Docker Inc.},
   howpublished = {\url{https://github.com/docker/compose}},
@@ -243,14 +243,14 @@
 }
 
 % ==== Alibaba ====
-@online{container:alibaba:pouch,
+@online{devops:container:alibaba:pouch,
   title = {Pouch},
   author = {Alibaba},
   howpublished = {\url{https://github.com/alibaba/pouch}},
   note = {Accessed: 2018-03-31}
 }
 
-@online{container:alibaba:dragonfly,
+@online{devops:container:alibaba:dragonfly,
   title = {Dragonfly},
   author = {Alibaba},
   howpublished = {\url{https://github.com/alibaba/dragonfly}},
@@ -266,7 +266,7 @@
 
 % common workflow language 
 % https://github.com/common-workflow-language/common-workflow-language
-@article{workflow:cwl,
+@article{devops:workflow:cwl,
   title={Common Workflow Language, v1. 0},
   author={Amstutz, Peter and Crusoe, Michael R and Tijani{\'c}, Neboj{\v{s}}a and Chapman, Brad and Chilton, John and Heuer, Michael and Kartashov, Andrey and Leehr, Dan and M{\'e}nager, Herv{\'e} and Nedeljkovich, Maya and others},
   year={2016}
@@ -274,7 +274,7 @@
 
 % reflow
 % https://github.com/grailbio/reflow
-@online{workflow:reflow,
+@online{devops:workflow:reflow,
   title = {Reflow},
   author = {GRAIL},
   howpublished = {\url{https://github.com/grailbio/reflow}},
@@ -286,7 +286,7 @@
 % Scheduler
 
 % ==== Mesos ====
-@inproceedings{scheduler:mesos,
+@inproceedings{distsys:scheduler:mesos,
   title={Mesos: A Platform for Fine-Grained Resource Sharing in the Data Center.},
   author={Hindman, Benjamin and Konwinski, Andy and Zaharia, Matei and Ghodsi, Ali and Joseph, Anthony D and Katz, Randy H and Shenker, Scott and Stoica, Ion},
   booktitle={NSDI},
@@ -298,7 +298,7 @@
 % ==== /Mesos ====
 
 % Yarn
-@inproceedings{scheduler:yarn,
+@inproceedings{distsys:scheduler:yarn,
   title={Apache hadoop yarn: Yet another resource negotiator},
   author={Vavilapalli, Vinod Kumar and Murthy, Arun C and Douglas, Chris and Agarwal, Sharad and Konar, Mahadev and Evans, Robert and Graves, Thomas and Lowe, Jason and Shah, Hitesh and Seth, Siddharth and others},
   booktitle={Proceedings of the 4th annual Symposium on Cloud Computing},
@@ -307,10 +307,9 @@
   organization={ACM}
 }
 
-
 % ==== Kubernetes ====
 % https://research.google.com/pubs/pub44843.html
-@article{scheduler:kubernetes,
+@article{distsys:scheduler:kubernetes,
     title = {Borg, Omega, and Kubernetes},
     author  = {Brendan Burns and Brian Grant and David Oppenheimer and Eric Brewer and John Wilkes},
     year  = {2016},
@@ -326,7 +325,7 @@
 % Apache
 % stuff that are hard to categorize ...
 
-@online{apache:arrow,
+@online{distsys:apache:arrow,
   title = {Apache Arrow},
   author = {Apache},
   howpublished = {\url{https://arrow.apache.org/}},
@@ -340,7 +339,7 @@
 % ==== file: distsys/_bib/consensus.bib ====
 % Consensus
 
-@inproceedings{consensus:zookeeper,
+@inproceedings{distsys:consensus:zookeeper,
   title={ZooKeeper: Wait-free Coordination for Internet-scale Systems.},
   author={Hunt, Patrick and Konar, Mahadev and Junqueira, Flavio Paiva and Reed, Benjamin},
   booktitle={USENIX annual technical conference},
@@ -350,7 +349,7 @@
   organization={Boston, MA, USA}
 }
 
-@article{consensus:paxos,
+@article{distsys:consensus:paxos,
   title={Paxos made simple},
   author={Lamport, Leslie and others},
   journal={ACM Sigact News},
@@ -360,7 +359,7 @@
   year={2001}
 }
 
-@inproceedings{consensus:raft,
+@inproceedings{distsys:consensus:raft,
   title={In search of an understandable consensus algorithm.},
   author={Ongaro, Diego and Ousterhout, John K},
   booktitle={USENIX Annual Technical Conference},
@@ -374,7 +373,7 @@
 
 % === Popper ===
 % Use DevOps tools to make system evaluation reproducible, i.e. Ansible, Docker etc.
-@inproceedings{reproduce:popper,
+@inproceedings{general:reproduce:popper,
   title={The popper convention: Making reproducible systems evaluation practical},
   author={Jimenez, Ivo and Sevilla, Michael and Watkins, Noah and Maltzahn, Carlos and Lofstead, Jay and Mohror, Kathryn and Arpaci-Dusseau, Andrea and Arpaci-Dusseau, Remzi},
   booktitle={Parallel and Distributed Processing Symposium Workshops (IPDPSW), 2017 IEEE International},
@@ -388,7 +387,7 @@
 % ==== file: general/_bib/perf.bib ====
 % Performance optimization
 
-@inproceedings{perf:google:vizier,
+@inproceedings{general:perf:google:vizier,
   title={Google vizier: A service for black-box optimization},
   author={Golovin, Daniel and Solnik, Benjamin and Moitra, Subhodeep and Kochanski, Greg and Karro, John and Sculley, D},
   booktitle={Proceedings of the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
