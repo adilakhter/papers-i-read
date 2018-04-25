@@ -91,6 +91,18 @@
 
 % TODO: add other tsdbs
 
+@online{db:tsdb:graphite,
+  title={Graphite},
+  howpublished={\url{https://graphiteapp.org/}},
+  note = {Accessed: 2018-03-31}
+}
+
+@online{db:tsdb:akumuli,
+  title={Akumuli},
+  howpublished={\url{https://github.com/akumuli/Akumuli}},
+  note = {Accessed: 2018-03-31}
+}
+
 % ==== libtsdb ====
 @online{db:tsdb:libtsdb,
   title = {libTSDB},
@@ -282,7 +294,42 @@
   howpublished = {\url{https://github.com/locustio/locust}},
   note = {Accessed: 2018-03-31}
 }
+
+@online{devops:bench:soasta,
+  title = {Soasta},
+  howpublished = {\url{https://www.soasta.com/load-testing/}},
+  note = {Accessed: 2018-03-31}
+}
+
+@online{devops:bench:flood,
+  title = {Flood.io},
+  howpublished = {\url{https://flood.io/}},
+  note = {Accessed: 2018-03-31}
+}
+
+@online{devops:bench:mzbench,
+  title = {Mzbench},
+  howpublished = {\url{https://github.com/satori-com/mzbench}},
+  note = {Accessed: 2018-03-31}
+}
+
+
+
+
 % ==== /file: devops/_bib/benchmark.bib ====
+
+% ==== file: devops/_bib/k8s.bib ====
+% Kubernetes
+% TODO: kuberntes itself is in distsys ...
+
+@online{devops:k8s:appcontroller,
+  title = {Kubernetes AppController},
+  howpublished = {\url{https://github.com/Mirantis/k8s-AppController}},
+  note = {Accessed: 2018-03-31}
+}
+
+
+% ==== /file: devops/_bib/k8s.bib ====
 
 % ==== file: devops/_bib/container.bib ====
 % Container
@@ -291,6 +338,12 @@
   title = {Docker Compose},
   author = {Docker Inc.},
   howpublished = {\url{https://github.com/docker/compose}},
+  note = {Accessed: 2018-03-31}
+}
+
+@online{devops:container:cadvisor,
+  title = {cAdvisor},
+  howpublished = {\url{https://github.com/google/cadvisor}},
   note = {Accessed: 2018-03-31}
 }
 
@@ -411,12 +464,29 @@
   year={2001}
 }
 
+% ==== raft ==== %
 @inproceedings{distsys:consensus:raft,
   title={In search of an understandable consensus algorithm.},
   author={Ongaro, Diego and Ousterhout, John K},
   booktitle={USENIX Annual Technical Conference},
   pages={305--319},
   year={2014}
+}
+
+@online{distsys:consensus:raft:etcd,
+  title = {etcd: a dirstibued key-value store using Raft},
+  author = {CoreOS},
+  howpublished = {\url{https://github.com/coreos/etcd/}},
+  note = {Accessed: 2018-03-31}
+}
+% ==== /raft ==== %
+
+
+@online{distsys:consensus:jepsen,
+  title = {Jepsen: A framwork for distributed system verification, with fault injection},
+  author = {Kyle Kingsbury},
+  howpublished = {\url{https://jepsen.io/}},
+  note = {Accessed: 2018-03-31}
 }
 % ==== /file: distsys/_bib/consensus.bib ====
 
@@ -455,3 +525,13 @@
   organization={ACM}
 }
 % ==== /file: general/_bib/perf.bib ====
+
+% ==== file: lang/_bib/all.bib ====
+% lang
+
+@online{lang:go,
+  title = {The Go Programming Language},
+  howpublished = {\url{https://golang.org/}},
+  note = {Accessed: 2018-03-31}
+}
+% ==== /file: lang/_bib/all.bib ====

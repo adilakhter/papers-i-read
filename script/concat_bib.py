@@ -9,6 +9,7 @@ dirs = [
     'devops',
     'distsys',
     'general',
+    'lang',
 ]
 
 
