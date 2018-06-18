@@ -50,7 +50,7 @@
   - blocked
 - process context
 
-````c
+````
 // xv6 is used MIT 6.828 https://github.com/mit-pdos/xv6-public
 // xv6 Proc structure
 struct context {
