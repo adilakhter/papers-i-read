@@ -2,7 +2,6 @@
 
 https://medium.com/go-walkthrough/go-walkthrough-encoding-json-package-9681d1d37a8f
 
-
 ## TODO
 
 - [ ] JSON is LL(1) parseable
